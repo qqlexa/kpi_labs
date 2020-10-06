@@ -36,3 +36,14 @@
     <td>0.045</td>
   </tr>
 </table>
+<p>f(x):</p>
+<table>
+  <tr>
+    <td>x <= -0.5</td>
+    <td>x > -0.5</td>
+  </tr>
+  <tr>
+    <td>ax - b</td>
+    <td>-(x + a) / b</td>
+  </tr>
+</table>
