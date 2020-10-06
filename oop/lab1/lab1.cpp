@@ -5,7 +5,6 @@
 
 using namespace std;
 
-
 struct Parameters {
 	vector<float> fx;
 
@@ -171,8 +170,6 @@ vector<float> generateRandomArray(vector<float> fx, float S1, float S2, float be
 			random_array[i] = random_value;
 		}
 	}
-
-
 	return random_array;
 }
 
@@ -194,7 +191,6 @@ void printRandomArray(vector<float> rnd) {
 
 vector<int> generateLinearArray(vector<float> fx, int lower_bound, int upper_bound) {
 	vector<int> linear_array;
-
 	
 	float min_value = getMinValue(fx);
 	float max_value = getMaxValue(fx);
