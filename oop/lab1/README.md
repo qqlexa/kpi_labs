@@ -26,3 +26,13 @@
     <td>0.5</td>
   </tr>
 </table>
+<table>
+  <tr>
+    <td>A</td>
+    <td>δ</td>
+  </tr>
+   <tr>
+    <td>70</td>
+    <td>0.045</td>
+  </tr>
+</table>
