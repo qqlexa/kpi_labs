@@ -12,11 +12,17 @@
 <h2>My data:</h2>
 <table> 
   <tr>
-    <td>1 </td>
-    <td>2 </td>
+    <td>a</td>
+    <td>b</td>
+    <td>x1</td>
+    <td>x2</td>
+    <td>dx</td>
   </tr>
   <tr>
-    <td>3 </td>
-    <td>4 </td>
+    <td>3</td>
+    <td>1</td>
+    <td>-5</td>
+    <td>5</td>
+    <td>0.5</td>
   </tr>
 </table>
