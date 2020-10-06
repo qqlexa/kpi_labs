@@ -49,3 +49,4 @@
 </table>
 <h4>S1 – середнє серед значень функції f(x), що більше 0</h4>
 <h4>S2 – максимальне значення функції f(x) серед розрахованих точок</h4>
+<a href=https://github.com/qqlexa/kpi_labs/blob/main/oop/lab1/lab1.cpp>Solution</a>
