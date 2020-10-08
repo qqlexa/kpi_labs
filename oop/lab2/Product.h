@@ -10,23 +10,33 @@ private:
     int soldForMonth_;
 
 public:
-    Product();
-    Product(std::string name, float price=0.0);
-    Product(std::string name, float price, int quantityDelivery, int soldForMonth);
-    ~Product();
+    Product();                                                                       // default constructor
+    Product(std::string name, float price=0.0);                                      // constructor with default parameter
+    Product(std::string name, float price, int quantityDelivery, int soldForMonth);  // overload-constructor
+    Product(std::string name, double price, int quantityDelivery, int soldForMonth); // overload-constructor
+    Product(const Product&);                                                         // copy-constructor
+
+    ~Product();                                                                      // destructor
 
     std::string getName();
     void setName(std::string);
 
     float getPrice();
-    void setPrice(int);
-    void setPrice(float);
-
+    void setPrice(int);     // overloading of method
+    void setPrice(float);   // overloading of method
+    void setPrice(double);  // overloading of method
+                            
     int getQuantityDelivery();
     void setQuantityDelivery(int);
 
     int getSoldForMonth();
     void setSoldForMonth(int);
+
+    Product& operator++();
+    Product operator++(int);
+
+    Product& operator--();
+    Product operator--(int);
 };
 
 #endif //UNTITLED_PRODUCT_H
