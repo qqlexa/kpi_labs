@@ -34,6 +34,8 @@ for i in os.listdir(tables_path):
 
                 limit_weight_using = ""  # г / год
                 limit_drop = ""          # мг / м^3
+                # read table, with ignoring of the first eight lines,
+                # which show info about table-columns
                 for j in f.readlines()[8::]:
 
                     if "+" in j:
@@ -57,8 +59,8 @@ for i in os.listdir(tables_path):
 
                         name_element = ""
 
-                        limit_weight_using = ""  # г / год
-                        limit_drop = ""  # мг / м^3
+                        limit_weight_using = ""     # г / год
+                        limit_drop = ""             # мг / м^3
 
                         continue
 
