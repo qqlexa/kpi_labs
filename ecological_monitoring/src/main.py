@@ -77,7 +77,7 @@ with open("objects (1).txt", "rt", encoding="utf-8") as f:
         if len(element_info) > 1:
             temp_factory.add_element(element_info[0], element_info[1])
             element_info = list()
-            
+
         element_info.append(i.replace("\n", ""))
 
 cursor.close()
