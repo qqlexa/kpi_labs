@@ -11,18 +11,6 @@ tables_path = os.path.dirname(__file__) + "/tables/"
 conn = sqlite3.connect(tables_path + "tables_test.db")
 cursor = conn.cursor()
 
-# зробити запит до БД
-sql_request = """ SELECT * FROM table1 WHERE "Назва речовини" LIKE "%суспендованих%" """
-
-cursor.execute(sql_request)
-parameters = cursor.fetchone()
-conn.commit()
-
-print(parameters)
-
-cursor.close()
-conn.close()
-
 
 class Factory:
     def __init__(self, name):
@@ -30,31 +18,48 @@ class Factory:
         self.elements = []
 
     def add_element(self, element_name, element_value):
-        """
-        new_string = re.findall(r'[0-9]*[.,]?[0-9]+', "  від 100 г/год до 2000 г/год   ")
-        print(new_string)
-
-        for p in new_string:
-            print(p)
-        if len(new_string) > 1:
-            values = []
-            for p in new_string:
-                values.append(float(p))
-            max_value = max(values)
-        else:
-            max_value = float(new_string[0])
-        print(max_value)
-        """
-        print(element_value)
         value = float(re.findall(r'[0-9]*[.,]?[0-9]+', element_value)[0])
-        print(value)
         value *= (10**6) / (365 * 24)  # transform to gram/hour
-        print(value)
-        self.elements.append(list([element_name, round(value, 3)]))
+        parameters = []
+        # зробити запит до БД
+        for p in range(1, 6):
+            sql_request = """ SELECT * FROM table{n} 
+            WHERE "Назва речовини" LIKE "%{name_element}%" """.format(n=p, name_element=element_name)
+            # print(sql_request)
+            cursor.execute(sql_request)
+
+            parameters = cursor.fetchone()
+            conn.commit()
+            if parameters:
+                break
+
+        if not parameters:
+            parameters = list()
+
+        # parameters is tuple from 4 elements: "Клас речовини", "Назва речовини", "ВМВ", "ГДК"
+        if len(parameters) > 0:
+            available_line = re.findall(r'[0-9]*[.,]?[0-9]+', parameters[2])
+
+            if len(available_line) > 1:
+                values = []
+                for p in available_line:
+                    values.append(float(p))
+                max_value = max(values)
+            else:
+                max_value = float(available_line[0])
+
+            self.elements.append(list([element_name, round(value, 3), max_value]))
+        else:
+            print("There is not the value {name} in database".format(name=element_name))
+    A = [1, 2, 3]
 
     def print_elements(self):
+        print(Fore.MAGENTA + self.name + Fore.RESET)
         for p in self.elements:
-            print(p)
+            print(p[0], end=" ")
+            color = Fore.GREEN if p[1] < p[2] else Fore.RED
+            print(color + str(p[1]) + Fore.RESET, end=" ")
+            print(p[2])
 
     def get_name(self):
         return self.name
@@ -63,7 +68,7 @@ class Factory:
         self.name = name
 
 
-with open("factory.txt", "rt", encoding="utf-8") as f:
+with open("objects.txt", "rt", encoding="utf-8") as f:
     factory_name = ""
     is_factory_selected = False
     element_info = []
@@ -89,3 +94,5 @@ with open("factory.txt", "rt", encoding="utf-8") as f:
             element_info = list()
             element_info.append(i.replace("\n", ""))
 
+cursor.close()
+conn.close()
