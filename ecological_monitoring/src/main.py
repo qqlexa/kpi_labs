@@ -60,6 +60,7 @@ class Factory:
             color = Fore.GREEN if p[1] < p[2] else Fore.RED
             print(color + str(p[1]) + Fore.RESET, end=" ")
             print(p[2])
+        print()
 
     def get_name(self):
         return self.name
@@ -77,9 +78,6 @@ with open("objects.txt", "rt", encoding="utf-8") as f:
         if not is_factory_selected:
             temp_factory = Factory(i.replace("\n", ""))
             is_factory_selected = True
-
-            print(f"\nВибраний об'єкт - {temp_factory.name}")
-
             continue
 
         if "$" in i:
