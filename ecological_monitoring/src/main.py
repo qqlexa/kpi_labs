@@ -1,9 +1,6 @@
 import os
-import sys
 import sqlite3
-import time
 from colorama import Fore
-import regex
 import re
 
 tables_path = os.path.dirname(__file__) + "/tables/"
@@ -32,8 +29,7 @@ class Factory:
             conn.commit()
             if parameters:
                 break
-
-        if not parameters:
+        else:
             parameters = list()
 
         # parameters is tuple from 4 elements: "Клас речовини", "Назва речовини", "ВМВ", "ГДК"
@@ -51,7 +47,6 @@ class Factory:
             self.elements.append(list([element_name, round(value, 3), max_value]))
         else:
             print("There is not the value {name} in database".format(name=element_name))
-    A = [1, 2, 3]
 
     def print_elements(self):
         print(Fore.MAGENTA + self.name + Fore.RESET)
@@ -62,17 +57,11 @@ class Factory:
             print(p[2])
         print()
 
-    def get_name(self):
-        return self.name
 
-    def set_name(self, name):
-        self.name = name
-
-
-with open("objects.txt", "rt", encoding="utf-8") as f:
+with open("objects (1).txt", "rt", encoding="utf-8") as f:
     factory_name = ""
     is_factory_selected = False
-    element_info = []
+    element_info = []  # [element_name, element_value]
 
     for i in f.readlines():
         if not is_factory_selected:
@@ -85,12 +74,11 @@ with open("objects.txt", "rt", encoding="utf-8") as f:
             temp_factory.print_elements()
             continue
 
-        if len(element_info) < 2:
-            element_info.append(i.replace("\n", ""))
-        else:
+        if len(element_info) > 1:
             temp_factory.add_element(element_info[0], element_info[1])
             element_info = list()
-            element_info.append(i.replace("\n", ""))
+            
+        element_info.append(i.replace("\n", ""))
 
 cursor.close()
 conn.close()
