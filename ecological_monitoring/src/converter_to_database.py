@@ -33,14 +33,14 @@ for i in os.listdir(tables_path):
                 name_element = ""
 
                 limit_weight_using = ""  # г / год
-                limit_drop = ""  # мг / м^3
+                limit_drop = ""          # мг / м^3
                 for j in f.readlines()[8::]:
 
                     if "+" in j:
-                        f2.write(warning_class_element + "\n")
-                        f2.write(name_element + "\n")
-                        f2.write(limit_weight_using + "\n")
-                        f2.write(limit_drop + "\n")
+                        f2.write(warning_class_element + "\n" +
+                                name_element + "\n" +
+                                limit_weight_using + "\n" +
+                                limit_drop + "\n")
 
                         sql_request = """
                         INSERT INTO {table}
