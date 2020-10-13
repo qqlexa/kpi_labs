@@ -34,7 +34,7 @@ void printProducts(vector<Product*> products) {
 
 
 int main() {
-	Product* product = new Product();			 // name="Product", price=0, quantityDelivery=0, soldForMonth=0
+	Product* product = new Product();					     // name="Product", price=0, quantityDelivery=0, soldForMonth=0
 	Product* carrot = new Product("Carrot");                 // price=0, quantityDelivery=0, soldForMonth=0
 	Product* pumpkin = new Product("Pumpkin", 10.5, 50, 20);
 	vector<Product*> products = { product, carrot, pumpkin };
@@ -56,9 +56,11 @@ int main() {
 	// demonstration of overloading
 	cout << "The price of " << cucumber.getName() << " is falling!" << endl;
 	cout << cucumber.getName() << " costs: " << cucumber.getPrice() << endl;
-	--cucumber;                                   // Increment and decrement are overloaded
+	++cucumber;                                   // Increment and decrement are overloaded
 	cout << cucumber.getName() << " costs: " << cucumber.getPrice() << endl;
-	cucumber--;                                   // Increment and decrement are overloaded
+	cucumber++;                                   // Increment and decrement are overloaded
+	cout << cucumber.getName() << " costs: " << cucumber.getPrice() << endl;
+	cucumber.riseInPrice(10.2);
 	cout << cucumber.getName() << " costs: " << cucumber.getPrice() << endl;
 	cout << endl;
 	return 0;
