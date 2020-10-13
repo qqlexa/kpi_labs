@@ -37,6 +37,12 @@ public:
 
     Product& operator--();
     Product operator--(int);
+    
+private:
+    bool checkName();             // checks name_ is correct
+    bool checkPrice();            // checks price_ is correct
+    bool checkQuantityDelivery(); // checks quantityDelivery_ is correct
+    bool checkSoldForMonth();     // checks soldForMonth_ is correct
 };
 
 #endif //UNTITLED_PRODUCT_H
