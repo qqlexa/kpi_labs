@@ -7,6 +7,7 @@ Product::Product() {
     price_ = 0.0;
     quantityDelivery_ = 0;
     soldForMonth_ = 0;
+    checkIntegrity();
 }
 
 Product::Product(std::string name, float price) {
@@ -14,6 +15,7 @@ Product::Product(std::string name, float price) {
     price_ = price;
     quantityDelivery_ = 0;
     soldForMonth_ = 0;
+    checkIntegrity();
 }
 
 Product::Product(std::string name, float price, int quantityDelivery, int soldForMonth){
@@ -21,6 +23,7 @@ Product::Product(std::string name, float price, int quantityDelivery, int soldFo
     price_ = price;
     quantityDelivery_ = quantityDelivery;
     soldForMonth_ = soldForMonth;
+    checkIntegrity();
 }
 
 Product::Product(std::string name, double price, int quantityDelivery, int soldForMonth) {
@@ -28,6 +31,7 @@ Product::Product(std::string name, double price, int quantityDelivery, int soldF
     price_ = float(price);
     quantityDelivery_ = quantityDelivery;
     soldForMonth_ = soldForMonth;
+    checkIntegrity();
 }
 
 Product::Product(const Product& product) {
@@ -36,6 +40,7 @@ Product::Product(const Product& product) {
     quantityDelivery_ = product.quantityDelivery_;
     soldForMonth_ = product.soldForMonth_;
     std::cout << name_ << " was copied" << std::endl;
+    checkIntegrity();
 }
 
 Product::~Product() {
@@ -48,22 +53,16 @@ std::string Product::getName() {
 
 void Product::setName(std::string name) {
     name_ = name;
+    checkIntegrity();
 }
 
 float Product::getPrice() {
     return price_;
 }
 
-void Product::setPrice(int price) {
-    price_ = float(price);
-}
-
 void Product::setPrice(float price) {
     price_ = price;
-}
-
-void Product::setPrice(double price) {
-    price_ = float(price);
+    checkIntegrity();
 }
 
 int Product::getQuantityDelivery() {
@@ -72,6 +71,7 @@ int Product::getQuantityDelivery() {
 
 void Product::setQuantityDelivery(int quantityDelivery) {
     quantityDelivery_ = quantityDelivery;
+    checkIntegrity();
 }
 
 int Product::getSoldForMonth() {
@@ -80,6 +80,7 @@ int Product::getSoldForMonth() {
 
 void Product::setSoldForMonth(int soldForMonth) {
     soldForMonth_ = soldForMonth;
+    checkIntegrity();
 }
 
 Product& Product::operator++() {
