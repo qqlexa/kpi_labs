@@ -112,3 +112,10 @@ bool Product::checkName(){
     }
     return true;
 }
+
+
+void Product::checkIntegrity(){
+    if(!(checkName() && checkPrice() && checkQuantityDelivery() && checkSoldForMonth())){
+        exit(1); // throw exception would be better
+    }
+}
