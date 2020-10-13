@@ -113,7 +113,13 @@ bool Product::checkName(){
     return true;
 }
 
-
+bool Product::checkPrice(){
+    if(price_ < 0){
+        std::cout << "\nWrong price_ parameter. Should not be < 0\n";
+        return false;
+    }
+    return true;
+}
 void Product::checkIntegrity(){
     if(!(checkName() && checkPrice() && checkQuantityDelivery() && checkSoldForMonth())){
         exit(1); // throw exception would be better
