@@ -7,7 +7,6 @@ Product::Product() {
     price_ = 0.0;
     quantityDelivery_ = 0;
     soldForMonth_ = 0;
-    checkIntegrity();
 }
 
 Product::Product(std::string name, float price) {
@@ -15,15 +14,13 @@ Product::Product(std::string name, float price) {
     price_ = price;
     quantityDelivery_ = 0;
     soldForMonth_ = 0;
-    checkIntegrity();
 }
 
-Product::Product(std::string name, float price, int quantityDelivery, int soldForMonth){
+Product::Product(std::string name, float price, int quantityDelivery, int soldForMonth) {
     name_ = name;
     price_ = price;
     quantityDelivery_ = quantityDelivery;
     soldForMonth_ = soldForMonth;
-    checkIntegrity();
 }
 
 Product::Product(std::string name, double price, int quantityDelivery, int soldForMonth) {
@@ -31,7 +28,6 @@ Product::Product(std::string name, double price, int quantityDelivery, int soldF
     price_ = float(price);
     quantityDelivery_ = quantityDelivery;
     soldForMonth_ = soldForMonth;
-    checkIntegrity();
 }
 
 Product::Product(const Product& product) {
@@ -40,7 +36,6 @@ Product::Product(const Product& product) {
     quantityDelivery_ = product.quantityDelivery_;
     soldForMonth_ = product.soldForMonth_;
     std::cout << name_ << " was copied" << std::endl;
-    checkIntegrity();
 }
 
 Product::~Product() {
@@ -53,9 +48,6 @@ std::string Product::getName() {
 
 void Product::setName(std::string name) {
     name_ = name;
-    if(!checkName()){
-        exit(1); // throw exception would be better
-    }
 }
 
 float Product::getPrice() {
@@ -64,9 +56,6 @@ float Product::getPrice() {
 
 void Product::setPrice(float price) {
     price_ = price;
-    if(!checkPrice()){
-        exit(1); // throw exception would be better
-    }
 }
 
 int Product::getQuantityDelivery() {
@@ -75,9 +64,6 @@ int Product::getQuantityDelivery() {
 
 void Product::setQuantityDelivery(int quantityDelivery) {
     quantityDelivery_ = quantityDelivery;
-    if(!checkQuantityDelivery()){
-        exit(1); // throw exception would be better
-    }
 }
 
 int Product::getSoldForMonth() {
@@ -86,9 +72,18 @@ int Product::getSoldForMonth() {
 
 void Product::setSoldForMonth(int soldForMonth) {
     soldForMonth_ = soldForMonth;
-    if(!checkSoldForMonth()){
-        exit(1); // throw exception would be better
-    }
+}
+
+void Product::riseInPrice(int increase) {
+    price_ += increase;
+}
+
+void Product::riseInPrice(float increase) {
+    price_ += increase;
+}
+
+void Product::riseInPrice(double increase) {
+    price_ += float(increase);
 }
 
 Product& Product::operator++() {
@@ -98,7 +93,7 @@ Product& Product::operator++() {
 
 Product Product::operator++(int) {
     Product temp = *this;
-    ++*this;
+    ++* this;
     return temp;
 }
 
@@ -109,45 +104,45 @@ Product& Product::operator--() {
 
 Product Product::operator--(int) {
     Product temp = *this;
-    --*this;
+    --* this;
     return temp;
 }
 
 // value checks
-bool Product::checkName(){
-    if(name_.length() < 1){
+bool Product::checkName() {
+    if (name_.length() < 1) {
         std::cout << "\nWrong stationName_ parameter. Should not be empty\n";
         return false;
     }
     return true;
 }
 
-bool Product::checkPrice(){
-    if(price_ < 0){
+bool Product::checkPrice() {
+    if (price_ < 0) {
         std::cout << "\nWrong price_ parameter. Should not be < 0\n";
         return false;
     }
     return true;
 }
 
-bool Product::checkQuantityDelivery(){
-    if(quantityDelivery_ < 0){
+bool Product::checkQuantityDelivery() {
+    if (quantityDelivery_ < 0) {
         std::cout << "\nWrong quantityDelivery_ parameter. Should not be < 0\n";
         return false;
     }
     return true;
 }
 
-bool Product::checkSoldForMonth(){
-    if(soldForMonth_ < 0){
+bool Product::checkSoldForMonth() {
+    if (soldForMonth_ < 0) {
         std::cout << "\nWrong soldForMonth_ parameter. Should not be < 0\n";
         return false;
     }
     return true;
 }
 
-void Product::checkIntegrity(){
-    if(!(checkName() && checkPrice() && checkQuantityDelivery() && checkSoldForMonth())){
+void Product::checkIntegrity() {
+    if (!(checkName() && checkPrice() && checkQuantityDelivery() && checkSoldForMonth())) {
         exit(1); // throw exception would be better
     }
 }
