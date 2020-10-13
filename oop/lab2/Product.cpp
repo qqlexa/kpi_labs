@@ -53,7 +53,9 @@ std::string Product::getName() {
 
 void Product::setName(std::string name) {
     name_ = name;
-    checkIntegrity();
+    if(!checkName()){
+        exit(1); // throw exception would be better
+    }
 }
 
 float Product::getPrice() {
@@ -62,7 +64,9 @@ float Product::getPrice() {
 
 void Product::setPrice(float price) {
     price_ = price;
-    checkIntegrity();
+    if(!checkPrice()){
+        exit(1); // throw exception would be better
+    }
 }
 
 int Product::getQuantityDelivery() {
@@ -71,7 +75,9 @@ int Product::getQuantityDelivery() {
 
 void Product::setQuantityDelivery(int quantityDelivery) {
     quantityDelivery_ = quantityDelivery;
-    checkIntegrity();
+    if(!checkQuantityDelivery()){
+        exit(1); // throw exception would be better
+    }
 }
 
 int Product::getSoldForMonth() {
@@ -80,7 +86,9 @@ int Product::getSoldForMonth() {
 
 void Product::setSoldForMonth(int soldForMonth) {
     soldForMonth_ = soldForMonth;
-    checkIntegrity();
+    if(!checkSoldForMonth()){
+        exit(1); // throw exception would be better
+    }
 }
 
 Product& Product::operator++() {
