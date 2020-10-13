@@ -11,7 +11,7 @@ private:
 
 public:
     Product();                                                                       // default constructor
-    Product(std::string name, float price=0.0);                                      // constructor with default parameter
+    Product(std::string name, float price = 0.0);                                      // constructor with default parameter
     Product(std::string name, float price, int quantityDelivery, int soldForMonth);  // overload-constructor
     Product(std::string name, double price, int quantityDelivery, int soldForMonth); // overload-constructor
     Product(const Product&);                                                         // copy-constructor
@@ -23,19 +23,23 @@ public:
 
     float getPrice();
     void setPrice(float);
-                            
+
     int getQuantityDelivery();
     void setQuantityDelivery(int);
 
     int getSoldForMonth();
     void setSoldForMonth(int);
 
+    void riseInPrice(int);    // overloading
+    void riseInPrice(float);  // overloading
+    void riseInPrice(double); // overloading
+
     Product& operator++();
     Product operator++(int);
 
     Product& operator--();
     Product operator--(int);
-    
+
 private:
     bool checkName();             // checks name_ is correct
     bool checkPrice();            // checks price_ is correct
