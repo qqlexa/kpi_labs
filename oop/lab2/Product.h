@@ -22,9 +22,7 @@ public:
     void setName(std::string);
 
     float getPrice();
-    void setPrice(int);     // overloading of method
-    void setPrice(float);   // overloading of method
-    void setPrice(double);  // overloading of method
+    void setPrice(float);
                             
     int getQuantityDelivery();
     void setQuantityDelivery(int);
