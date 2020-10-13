@@ -43,6 +43,7 @@ private:
     bool checkPrice();            // checks price_ is correct
     bool checkQuantityDelivery(); // checks quantityDelivery_ is correct
     bool checkSoldForMonth();     // checks soldForMonth_ is correct
+    void checkIntegrity();        // checks everything
 };
 
 #endif //UNTITLED_PRODUCT_H
