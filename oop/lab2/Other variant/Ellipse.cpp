@@ -87,6 +87,9 @@ void Ellipse::setRadiusses(float radius1, float radius2) {
 
 void Ellipse::setRadius1(float radius) {
 	radius1_ = radius;
+	if (!checkRadius1()) {
+		exit(1); // throw exception would be better
+	}
 }
 
 float Ellipse::getRadius1() {
@@ -95,6 +98,9 @@ float Ellipse::getRadius1() {
 
 void Ellipse::setRadius2(float radius) {
 	radius2_ = radius;
+	if (!checkRadius2()) {
+		exit(1); // throw exception would be better
+	}
 }
 
 float Ellipse::getRadius2() {
@@ -221,6 +227,22 @@ bool Ellipse::checkName() {
 bool Ellipse::checkRadiusses() {
 	if (radius1_ < 0 || radius2_ < 0) {
 		std::cout << "\nWrong radius1_ or/and radius2_ parameter(s). Should not be < 0\n";
+		return false;
+	}
+	return true;
+}
+
+bool Ellipse::checkRadius1() {
+	if (radius1_ < 0) {
+		std::cout << "\nWrong radius1_ parameter. Should not be < 0\n";
+		return false;
+	}
+	return true;
+}
+
+bool Ellipse::checkRadius2() {
+	if (radius2_ < 0) {
+		std::cout << "\nWrong radius2_ parameter. Should not be < 0\n";
 		return false;
 	}
 	return true;
