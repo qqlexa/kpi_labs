@@ -44,6 +44,7 @@ Ellipse* createEllipseByInput() {
     Ellipse* localEllipse = new Ellipse();
     string userInput = "";
     float floatVar = 0;
+    float floatVar2 = 0;
     cout << "Enter ellipse name: ";
     getline(cin, userInput);
     localEllipse->setName(userInput);
