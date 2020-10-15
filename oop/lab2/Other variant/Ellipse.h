@@ -61,6 +61,8 @@ private:
 	// value checks
 	bool checkName();
 	bool checkRadiusses();
+	bool checkRadius1();
+	bool checkRadius2();
 	bool checkX();
 	bool checkY();
 	bool checkSquare();
