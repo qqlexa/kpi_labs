@@ -34,11 +34,7 @@ public:
     void riseInPrice(float);  // overloading
     void riseInPrice(double); // overloading
 
-    Product& operator++();
-    Product operator++(int);
-
-    Product& operator--();
-    Product operator--(int);
+    std::string operator+(const std::string&);
 
 private:
     bool checkName();             // checks name_ is correct
@@ -47,5 +43,7 @@ private:
     bool checkSoldForMonth();     // checks soldForMonth_ is correct
     void checkIntegrity();        // checks everything
 };
+
+std::string operator+(std::string, Product&);
 
 #endif //UNTITLED_PRODUCT_H
