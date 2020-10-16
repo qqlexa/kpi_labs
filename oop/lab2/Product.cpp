@@ -116,7 +116,6 @@ std::string Product::operator+(const std::string& str) {
     return name_ + str;
 }
 
-// Функція не є методом класу:
 std::string operator+(std::string str, Product& customObj) {
     return str + customObj.getName();
 }
