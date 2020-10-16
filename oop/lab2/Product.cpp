@@ -7,6 +7,7 @@ Product::Product() {
     price_ = 0.0;
     quantityDelivery_ = 0;
     soldForMonth_ = 0;
+    checkIntegrity();
 }
 
 Product::Product(std::string name, float price) {
@@ -14,6 +15,7 @@ Product::Product(std::string name, float price) {
     price_ = price;
     quantityDelivery_ = 0;
     soldForMonth_ = 0;
+    checkIntegrity();
 }
 
 Product::Product(std::string name, float price, int quantityDelivery, int soldForMonth) {
@@ -21,6 +23,7 @@ Product::Product(std::string name, float price, int quantityDelivery, int soldFo
     price_ = price;
     quantityDelivery_ = quantityDelivery;
     soldForMonth_ = soldForMonth;
+    checkIntegrity();
 }
 
 Product::Product(std::string name, double price, int quantityDelivery, int soldForMonth) {
@@ -28,6 +31,7 @@ Product::Product(std::string name, double price, int quantityDelivery, int soldF
     price_ = float(price);
     quantityDelivery_ = quantityDelivery;
     soldForMonth_ = soldForMonth;
+    checkIntegrity();
 }
 
 Product::Product(const Product& product) {
@@ -36,6 +40,7 @@ Product::Product(const Product& product) {
     quantityDelivery_ = product.quantityDelivery_;
     soldForMonth_ = product.soldForMonth_;
     std::cout << name_ << " was copied" << std::endl;
+    checkIntegrity();
 }
 
 Product::~Product() {
@@ -48,6 +53,9 @@ std::string Product::getName() {
 
 void Product::setName(std::string name) {
     name_ = name;
+    if (!checkName()) {
+        exit(1); // throw exception would be better
+    }
 }
 
 float Product::getPrice() {
@@ -56,6 +64,9 @@ float Product::getPrice() {
 
 void Product::setPrice(float price) {
     price_ = price;
+    if (!checkPrice()) {
+        exit(1); // throw exception would be better
+    }
 }
 
 int Product::getQuantityDelivery() {
@@ -64,6 +75,9 @@ int Product::getQuantityDelivery() {
 
 void Product::setQuantityDelivery(int quantityDelivery) {
     quantityDelivery_ = quantityDelivery;
+    if (!checkQuantityDelivery()) {
+        exit(1); // throw exception would be better
+    }
 }
 
 int Product::getSoldForMonth() {
@@ -72,40 +86,39 @@ int Product::getSoldForMonth() {
 
 void Product::setSoldForMonth(int soldForMonth) {
     soldForMonth_ = soldForMonth;
+    if (!checkSoldForMonth()) {
+        exit(1); // throw exception would be better
+    }
 }
 
 void Product::riseInPrice(int increase) {
     price_ += increase;
+    if (!checkPrice()) {
+        exit(1); // throw exception would be better
+    }
 }
 
 void Product::riseInPrice(float increase) {
     price_ += increase;
+    if (!checkPrice()) {
+        exit(1); // throw exception would be better
+    }
 }
 
 void Product::riseInPrice(double increase) {
     price_ += float(increase);
+    if (!checkPrice()) {
+        exit(1); // throw exception would be better
+    }
 }
 
-Product& Product::operator++() {
-    price_++;
-    return *this;
+std::string Product::operator+(const std::string& str) {
+    return name_ + str;
 }
 
-Product Product::operator++(int) {
-    Product temp = *this;
-    ++* this;
-    return temp;
-}
-
-Product& Product::operator--() {
-    price_--;
-    return *this;
-}
-
-Product Product::operator--(int) {
-    Product temp = *this;
-    --* this;
-    return temp;
+// Функція не є методом класу:
+std::string operator+(std::string str, Product& customObj) {
+    return str + customObj.getName();
 }
 
 // value checks
