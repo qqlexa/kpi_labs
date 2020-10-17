@@ -31,8 +31,8 @@ Ellipse::Ellipse(std::string name, float x, float y, float radius1, float radius
 	x_ = x;
 	y_ = y;
 
-	radius1_ = radius1_;
-	radius2_ = radius2_;
+	radius1_ = radius1;
+	radius2_ = radius2;
 	square_ = 0.0;
 	checkIntegrity();
 }
@@ -42,8 +42,8 @@ Ellipse::Ellipse(std::string name, float x, float y, float radius1, float radius
 	x_ = x;
 	y_ = y;
 
-	radius1_ = radius1_;
-	radius2_ = radius2_;
+	radius1_ = radius1;
+	radius2_ = radius2;
 	square_ = square;
 	checkIntegrity();
 }

@@ -15,6 +15,7 @@ int main(){
     bigEllips.printFields();
     bigEllips.setName(bigEllips + "1");
     bigEllips.printFields();
+    cout << endl << endl;
 
     string userInput = "";
     ellipses.push_back(new Ellipse("First"));

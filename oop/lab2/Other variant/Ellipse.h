@@ -13,7 +13,7 @@ private:
 public:
 	Ellipse();
 	Ellipse(std::string name);
-	Ellipse(std::string name, float x, float y, float radius1 = 0, float radius2 = 0);
+	Ellipse(std::string name, float x, float y, float radius1 = 0.0, float radius2 = 0.0);
 	Ellipse(std::string name, float x, float y, float radius1, float radius2, float square);
 	Ellipse(const Ellipse&);
 	~Ellipse();
