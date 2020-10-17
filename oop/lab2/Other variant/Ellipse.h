@@ -1,5 +1,5 @@
-#ifndef UNTITLED_PRODUCT_H
-#define UNTITLED_PRODUCT_H
+#ifndef UNTITLED_ELLIPSE_H
+#define UNTITLED_ELLIPSE_H
 #include <string>
 
 class Ellipse
@@ -22,28 +22,31 @@ public:
 	std::string getName();
 	void printName();
 
-	void setRadiusses(float radius1 = 1.0, float radius2 = 1.0);
+	void setRadiusses(float radius1 = 0.0, float radius2 = 0.0);
 	void setRadius1(float);
 	void setRadius2(float);
 	float getRadius1();
 	float getRadius2();
 	void printRadiusses();
 
-	void setX(float x);
 	float getX();
-
 	void printX();
-	void setY(float y);
-
-	void setCenter(float, float);
+	void setX(float x);
+	void incX();
 
 	float getY();
 	void printY();
+	void setY(float y);
+	void incY();
+
+	void setCenter(float, float);
 
 	void setSquare(float);
 	float getSquare();
 	void printSquare();
 	float countSquare();
+
+	void printFields();
 
 	Ellipse operator+(const Ellipse&);
 	bool operator>(const Ellipse&);
@@ -52,21 +55,19 @@ public:
 	bool operator>=(const Ellipse&);
 	bool operator<=(const Ellipse&);
 
-	Ellipse& operator++();
-	Ellipse operator++(int);
-	Ellipse& operator--();
-	Ellipse operator--(int);
+	std::string operator+(const std::string&);
 
 private:
-	// value checks
-	bool checkName();
-	bool checkRadiusses();
-	bool checkRadius1();
-	bool checkRadius2();
-	bool checkX();
-	bool checkY();
-	bool checkSquare();
-	void checkIntegrity();
+	bool checkName();               // checks name_ is correct
+	bool checkRadiusses();          // checks price_ is correct
+	bool checkRadius1();            // checks price_ is correct
+	bool checkRadius2();            // checks price_ is correct
+	bool checkX();                  // checks price_ is correct
+	bool checkY();                  // checks price_ is correct
+	bool checkSquare();             // checks price_ is correct
+	void checkIntegrity();          // checks everything
 };
+
+std::string operator+(std::string, Ellipse&);
 
 #endif

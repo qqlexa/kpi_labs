@@ -1,6 +1,7 @@
 #include "Ellipse.h"
 #include <math.h>
 #include <string>
+#include <iomanip>
 #include <iostream>
 
 Ellipse::Ellipse() {
@@ -127,6 +128,10 @@ void Ellipse::printX() {
 	std::cout << "X of " << name_ << " is " << x_ << std::endl;
 }
 
+void Ellipse::incX() {
+	x_++;
+}
+
 void Ellipse::setY(float y) {
 	y_ = y;
 	if (!checkY()) {
@@ -140,6 +145,10 @@ float Ellipse::getY() {
 
 void Ellipse::printY() {
 	std::cout << "Y of " << name_ << " is " << y_ << std::endl;
+}
+
+void Ellipse::incY() {
+	y_++;
 }
 
 void Ellipse::setCenter(float x, float y) {
@@ -167,6 +176,18 @@ float Ellipse::countSquare() {
 	return square_;
 }
 
+void Ellipse::printFields() {
+	using namespace std;
+	cout << setw(20) << left << name_
+		<< setw(20) << left << radius1_
+		<< setw(20) << left << radius2_
+		<< setw(20) << left << x_
+		<< setw(20) << left << y_
+		<< setw(20) << left << square_ 
+		<< endl;
+	
+}
+
 Ellipse Ellipse::operator+(const Ellipse& ellipseObjPar) {
 	Ellipse temp = Ellipse(name_, x_ + ellipseObjPar.x_, y_ + ellipseObjPar.y_);
 	return temp;
@@ -192,28 +213,13 @@ bool Ellipse::operator<=(const Ellipse& ellipseObjPar) {
 	return (square_ <= ellipseObjPar.square_) ? true : false;
 }
 
-Ellipse& Ellipse::operator++() {
-    x_++;
-    y_++;
-    return *this;
+std::string Ellipse::operator+(const std::string& str) {
+	return name_ + str;
 }
 
-Ellipse Ellipse::operator++(int) {
-	Ellipse temp = *this;
-    ++* this;
-    return temp;
-}
-
- Ellipse& Ellipse::operator--() {
-	 x_--;
-	 y_--;
-	return *this;
-}
-
- Ellipse Ellipse::operator--(int) {
-	 Ellipse temp = *this;
-	--* this;
-	return temp;
+// Функція не є методом класу:
+std::string operator+(std::string str, Ellipse& customObj) {
+	return str + customObj.getName();
 }
 
 bool Ellipse::checkName() {
