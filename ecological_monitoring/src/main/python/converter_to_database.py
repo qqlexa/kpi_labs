@@ -62,7 +62,7 @@ for type_element, file_name in enumerate(source_info_path, start=1):
                             limit_weight_using, limit_drop, type_element)
 
                     cursor.execute(sql_request.format(name_element=name_element, table="table"), task)
-                    conn.commit()
+
 
                     name_element = ""
                     limit_weight_using = ""     # г / год
@@ -87,6 +87,7 @@ for type_element, file_name in enumerate(source_info_path, start=1):
                     name_element = name_element.replace("  ", " ")
                     limit_weight_using = limit_weight_using.replace("  ", " ")
                     limit_drop = limit_drop.replace("  ", " ")
+    conn.commit()
 
 cursor.close()
 conn.close()

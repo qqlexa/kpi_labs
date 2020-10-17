@@ -4,8 +4,10 @@ from colorama import Fore
 import re
 
 tables_path = os.path.dirname(__file__) + "/tables/"
+database_name = "elements_limits.db"
+objects_file = "objects.txt"
 
-conn = sqlite3.connect(tables_path + "tables_test.db")
+conn = sqlite3.connect(tables_path + database_name)
 cursor = conn.cursor()
 
 
@@ -17,20 +19,14 @@ class Factory:
     def add_element(self, element_name, element_value):
         value = float(re.findall(r'[0-9]*[.,]?[0-9]+', element_value)[0])
         value *= (10**6) / (365 * 24)  # transform to gram/hour
-        parameters = []
-        # зробити запит до БД
-        for p in range(1, 6):
-            sql_request = """ SELECT * FROM table{n} 
-            WHERE "Назва речовини" LIKE "%{name_element}%" """.format(n=p, name_element=element_name)
-            # print(sql_request)
-            cursor.execute(sql_request)
 
-            parameters = cursor.fetchone()
-            conn.commit()
-            if parameters:
-                break
-        else:
-            parameters = list()
+        # зробити запит до БД
+        sql_request = """ SELECT * FROM "{table}"
+        WHERE "Назва речовини" LIKE "%{name_element}%" """.format(name_element=element_name, table="table")
+        # print(sql_request)
+        cursor.execute(sql_request)
+        parameters = cursor.fetchone()
+        conn.commit()
 
         # parameters is tuple from 4 elements: "Клас речовини", "Назва речовини", "ВМВ", "ГДК"
         if len(parameters) > 0:
@@ -53,12 +49,16 @@ class Factory:
         for p in self.elements:
             print(p[0], end=" ")
             color = Fore.GREEN if p[1] < p[2] else Fore.RED
-            print(color + str(p[1]) + Fore.RESET, end=" ")
-            print(p[2])
+            print(color + str(p[1]) + "г\\год " + Fore.RESET, end=" ")
+            print(str(p[2]) + "г\\год ", end=" ")
+            if p[1] > p[2]:
+                print(str(p[1] - p[2]))
+            else:
+                print()
         print()
 
 
-with open("objects (1).txt", "rt", encoding="utf-8") as f:
+with open(objects_file, "rt", encoding="utf-8") as f:
     factory_name = ""
     is_factory_selected = False
     element_info = []  # [element_name, element_value]
