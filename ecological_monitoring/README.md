@@ -24,5 +24,5 @@ $ Знак долару - відділення характеристики но
 Характеристика3
 $ Свідчення, про кінець опису характеристики останнього об'єкта
 ```
-<h3>Приклад роботи програми з <a href=https://github.com/qqlexa/kpi_labs/blob/main/ecological_monitoring/src/main/resourses/objects.txt>"src/resourses/objects.txt"</a></h3>
+<h3>Приклад роботи програми з <a href=https://github.com/qqlexa/kpi_labs/blob/main/ecological_monitoring/src/main/resourses/objects.txt>"src/main/resourses/objects.txt"</a></h3>
 <img src="https://github.com/qqlexa/kpi_labs/blob/main/ecological_monitoring/src/main/resourses/objects.jpg">
