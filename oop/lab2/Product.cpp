@@ -123,7 +123,7 @@ std::string operator+(std::string str, Product& customObj) {
 // value checks
 bool Product::checkName() {
     if (name_.length() < 1) {
-        std::cout << "\nWrong stationName_ parameter. Should not be empty\n";
+        std::cout << "\nWrong name_ parameter. Should not be empty\n";
         return false;
     }
     return true;
