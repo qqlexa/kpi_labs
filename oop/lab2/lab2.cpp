@@ -43,7 +43,8 @@ int main() {
 
 	// demonstration of copy-constructor
 	Product cucumber("Cucumber", 15.8, 7500, 23);
-	Product cucumber2(cucumber + "2");
+	Product cucumber2(cucumber);
+	cucumber2.setName(cucumber + "2");
 	Product cucumber3("3" + cucumber);
 	cout << endl;
 
