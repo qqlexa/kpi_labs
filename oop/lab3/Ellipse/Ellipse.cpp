@@ -3,9 +3,17 @@
 #include <string>
 #include <iomanip>
 #include <iostream>
+#pragma warning(disable : 4996)
+#define _CRT_SECURE_NO_WARNINGS
 
 Ellipse::Ellipse() {
-	name_ = "Ellipse";
+	std::string name = "Ellipse";
+	nameLen_ = name.length();
+	name_ = new char[nameLen_ + 1];
+	for (int i = 0; i < name.length(); i++) {
+		name_[i] = name[i];
+	}
+
 	x_ = 0.0;
 	y_ = 0.0;
 
@@ -15,7 +23,7 @@ Ellipse::Ellipse() {
 	checkIntegrity();
 }
 
-Ellipse::Ellipse(std::string name) {
+Ellipse::Ellipse(char* name) {
 	name_ = name;
 	x_ = 0;
 	y_ = 0;
@@ -26,7 +34,22 @@ Ellipse::Ellipse(std::string name) {
 	checkIntegrity();
 }
 
-Ellipse::Ellipse(std::string name, float x, float y, float radius1, float radius2) {
+Ellipse::Ellipse(std::string name) {
+	nameLen_ = name.length();
+	name_ = new char[nameLen_ + 1];
+	for (int i = 0; i < name.length(); i++) {
+		name_[i] = name[i];
+	}
+	x_ = 0;
+	y_ = 0;
+
+	radius1_ = 0;
+	radius2_ = 0;
+	square_ = 0.0;
+	checkIntegrity();
+}
+
+Ellipse::Ellipse(char* name, float x, float y, float radius1, float radius2) {
 	name_ = name;
 	x_ = x;
 	y_ = y;
@@ -37,7 +60,22 @@ Ellipse::Ellipse(std::string name, float x, float y, float radius1, float radius
 	checkIntegrity();
 }
 
-Ellipse::Ellipse(std::string name, float x, float y, float radius1, float radius2, float square) {
+Ellipse::Ellipse(std::string name, float x, float y, float radius1, float radius2) {
+	nameLen_ = name.length();
+	name_ = new char[nameLen_ + 1];
+	for (int i = 0; i < name.length(); i++) {
+		name_[i] = name[i];
+	}
+	x_ = x;
+	y_ = y;
+
+	radius1_ = radius1;
+	radius2_ = radius2;
+	square_ = 0.0;
+	checkIntegrity();
+}
+
+Ellipse::Ellipse(char* name, float x, float y, float radius1, float radius2, float square) {
 	name_ = name;
 	x_ = x;
 	y_ = y;
@@ -48,8 +86,28 @@ Ellipse::Ellipse(std::string name, float x, float y, float radius1, float radius
 	checkIntegrity();
 }
 
+Ellipse::Ellipse(std::string name, float x, float y, float radius1, float radius2, float square) {
+	nameLen_ = name.length();
+	name_ = new char[nameLen_ + 1];
+	for (int i = 0; i < name.length(); i++) {
+		name_[i] = name[i];
+	}
+	x_ = x;
+	y_ = y;
+
+	radius1_ = radius1;
+	radius2_ = radius2;
+	square_ = square;
+	checkIntegrity();
+}
+
 Ellipse::Ellipse(const Ellipse& ellipse) {
-	name_ = ellipse.name_;
+	std::cout << "Copy constructor" << std::endl;
+	nameLen_ = ellipse.nameLen_;
+	name_ = new char[nameLen_ + 1];
+	for (int i = 0; i < nameLen_; i++) {
+		name_[i] = ellipse.name_[i];
+	}
 	x_ = ellipse.x_;
 	y_ = ellipse.y_;
 
@@ -61,21 +119,34 @@ Ellipse::Ellipse(const Ellipse& ellipse) {
 
 Ellipse::~Ellipse() {
 	std::cout << "Destructor" << std::endl;
+	if (checkName()) {
+		delete name_; // throw exception would be better
+	}
+	
 }
 
 void Ellipse::setName(std::string name) {
-	name_ = name;
+	delete[] name_;
+	nameLen_ = name.length();
+	name_ = new char[nameLen_ + 1];
+	for (int i = 0; i < name.length(); i++) {
+		name_[i] = name[i];
+	}
+
 	if (!checkName()) {
 		exit(1); // throw exception would be better
 	}
 }
 
 std::string Ellipse::getName() {
-	return name_;
+	return std::string(name_);
 }
 
 void Ellipse::printName() {
-	std::cout << "Name is " << name_ << std::endl;
+	for (int i = 0; i < nameLen_; i++) {
+		std::cout << name_[i];
+	}
+	std::cout << std::endl;
 }
 
 void Ellipse::setRadiusses(float radius1, float radius2) {
@@ -178,8 +249,11 @@ float Ellipse::countSquare() {
 
 void Ellipse::printFields() {
 	using namespace std;
-	cout << setw(20) << left << name_
-		<< setw(20) << left << radius1_
+	for (int i = 0; i < nameLen_; i++) {
+		std::cout << name_[i];
+	}
+	std::cout << setw(abs(20 - nameLen_)) << left << " ";
+	std::cout << setw(20) << left << radius1_
 		<< setw(20) << left << radius2_
 		<< setw(20) << left << x_
 		<< setw(20) << left << y_
@@ -188,10 +262,6 @@ void Ellipse::printFields() {
 	
 }
 
-Ellipse Ellipse::operator+(const Ellipse& ellipseObjPar) {
-	Ellipse temp = Ellipse(name_, x_ + ellipseObjPar.x_, y_ + ellipseObjPar.y_);
-	return temp;
-}
 
 bool Ellipse::operator>(const Ellipse& ellipseObjPar) {
 	return (square_ > ellipseObjPar.square_) ? true : false;
@@ -214,7 +284,11 @@ bool Ellipse::operator<=(const Ellipse& ellipseObjPar) {
 }
 
 std::string Ellipse::operator+(const std::string& str) {
-	return name_ + str;
+	std::string result = "";
+	for (int i = 0; i < nameLen_; i++) {
+		result += name_[i];
+	}
+	return result + str;
 }
 
 // Функція не є методом класу:
@@ -223,7 +297,7 @@ std::string operator+(std::string str, Ellipse& customObj) {
 }
 
 bool Ellipse::checkName() {
-	if (name_.length() < 1) {
+	if (strlen(name_) < 1) {
 		std::cout << "\nWrong name_ parameter. Should not be empty\n";
 		return false;
 	}

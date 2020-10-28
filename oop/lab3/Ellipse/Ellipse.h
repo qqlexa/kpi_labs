@@ -5,15 +5,19 @@
 class Ellipse
 {
 private:
-	std::string name_;
+	char* name_;
+	int nameLen_;
 	float radius1_, radius2_;
 	float x_, y_;
 	float square_;
 
 public:
 	Ellipse();
+	Ellipse(char* name);
 	Ellipse(std::string name);
+	Ellipse(char* name, float x, float y, float radius1 = 0.0, float radius2 = 0.0);
 	Ellipse(std::string name, float x, float y, float radius1 = 0.0, float radius2 = 0.0);
+	Ellipse(char* name, float x, float y, float radius1, float radius2, float square);
 	Ellipse(std::string name, float x, float y, float radius1, float radius2, float square);
 	Ellipse(const Ellipse&);
 	~Ellipse();
@@ -48,7 +52,6 @@ public:
 
 	void printFields();
 
-	Ellipse operator+(const Ellipse&);
 	bool operator>(const Ellipse&);
 	bool operator<(const Ellipse&);
 	bool operator==(const Ellipse&);
