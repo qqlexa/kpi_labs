@@ -5,14 +5,18 @@
 class Product {
 private:
     char* name_;
+    int nameLen_;
     float price_;
     int quantityDelivery_;
     int soldForMonth_;
 
 public:
     Product();                                                                       // default constructor
-    Product(std::string name, float price = 0.0);                                      // constructor with default parameter
+    Product(char* name, float price = 0.0);                                          // constructor with default parameter
+    Product(std::string name, float price = 0.0);                                    // constructor with default parameter
+    Product(char* name, float price, int quantityDelivery, int soldForMonth);        // overload-constructor
     Product(std::string name, float price, int quantityDelivery, int soldForMonth);  // overload-constructor
+    Product(char* name, double price, int quantityDelivery, int soldForMonth);       // overload-constructor
     Product(std::string name, double price, int quantityDelivery, int soldForMonth); // overload-constructor
     Product(const Product&);                                                         // copy-constructor
 
@@ -33,6 +37,13 @@ public:
     void riseInPrice(int);    // overloading
     void riseInPrice(float);  // overloading
     void riseInPrice(double); // overloading
+    void printFields();
+
+    bool operator>(const Product&);
+    bool operator<(const Product&);
+    bool operator==(const Product&);
+    bool operator>=(const Product&);
+    bool operator<=(const Product&);
 
     std::string operator+(const std::string&);
 
