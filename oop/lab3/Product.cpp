@@ -1,16 +1,22 @@
 #include <iostream>
 #include <string>
+#include <iomanip>
 #include "Product.h"
 
 Product::Product() {
-    name_ = "Product";
+    std::string name = "Product";
+    nameLen_ = name.length();
+    name_ = new char[nameLen_ + 1];
+    for (int i = 0; i < name.length(); i++) {
+        name_[i] = name[i];
+    }
     price_ = 0.0;
     quantityDelivery_ = 0;
     soldForMonth_ = 0;
     checkIntegrity();
 }
 
-Product::Product(std::string name, float price) {
+Product::Product(char* name, float price) {
     name_ = name;
     price_ = price;
     quantityDelivery_ = 0;
@@ -18,15 +24,19 @@ Product::Product(std::string name, float price) {
     checkIntegrity();
 }
 
-Product::Product(std::string name, float price, int quantityDelivery, int soldForMonth) {
-    name_ = name;
+Product::Product(std::string name, float price) {
+    nameLen_ = name.length();
+    name_ = new char[nameLen_ + 1];
+    for (int i = 0; i < nameLen_; i++) {
+        name_[i] = name[i];
+    }
     price_ = price;
-    quantityDelivery_ = quantityDelivery;
-    soldForMonth_ = soldForMonth;
+    quantityDelivery_ = 0;
+    soldForMonth_ = 0;
     checkIntegrity();
 }
 
-Product::Product(std::string name, double price, int quantityDelivery, int soldForMonth) {
+Product::Product(char* name, float price, int quantityDelivery, int soldForMonth) {
     name_ = name;
     price_ = float(price);
     quantityDelivery_ = quantityDelivery;
@@ -34,17 +44,61 @@ Product::Product(std::string name, double price, int quantityDelivery, int soldF
     checkIntegrity();
 }
 
+Product::Product(std::string name, float price, int quantityDelivery, int soldForMonth) {
+    nameLen_ = name.length();
+    name_ = new char[nameLen_ + 1];
+    for (int i = 0; i < nameLen_; i++) {
+        name_[i] = name[i];
+    }
+    price_ = price;
+    quantityDelivery_ = quantityDelivery;
+    soldForMonth_ = soldForMonth;
+    checkIntegrity();
+}
+
+Product::Product(char* name, double price, int quantityDelivery, int soldForMonth) {
+    name_ = name;
+    price_ = float(price);
+    quantityDelivery_ = quantityDelivery;
+    soldForMonth_ = soldForMonth;
+    checkIntegrity();
+}
+
+Product::Product(std::string name, double price, int quantityDelivery, int soldForMonth) {
+    nameLen_ = name.length();
+    name_ = new char[nameLen_ + 1];
+    for (int i = 0; i < nameLen_; i++) {
+        name_[i] = name[i];
+    }
+    price_ = float(price);
+    quantityDelivery_ = quantityDelivery;
+    soldForMonth_ = soldForMonth;
+    checkIntegrity();
+}
+
 Product::Product(const Product& product) {
-    name_ = product.name_;
+    std::cout << "Copy constructor" << std::endl;
+    nameLen_ = product.nameLen_;
+    name_ = new char[nameLen_ + 1];
+    for (int i = 0; i < nameLen_; i++) {
+        name_[i] = product.name_[i];
+    }
     price_ = product.price_;
     quantityDelivery_ = product.quantityDelivery_;
     soldForMonth_ = product.soldForMonth_;
-    std::cout << name_ << " was copied" << std::endl;
     checkIntegrity();
 }
 
 Product::~Product() {
-    std::cout << "Destructor of " << name_ << std::endl;
+    std::cout << "Destructor of ";
+    for (int i = 0; i < nameLen_; i++) {
+        std::cout << name_[i];
+    }
+    std::cout << std::endl;
+
+    if (checkName()) {
+        delete name_; // throw exception would be better
+    }
 }
 
 std::string Product::getName() {
@@ -52,7 +106,13 @@ std::string Product::getName() {
 }
 
 void Product::setName(std::string name) {
-    name_ = name;
+    delete[] name_;
+    nameLen_ = name.length();
+    name_ = new char[nameLen_ + 1];
+    for (int i = 0; i < name.length(); i++) {
+        name_[i] = name[i];
+    }
+
     if (!checkName()) {
         exit(1); // throw exception would be better
     }
@@ -112,19 +172,59 @@ void Product::riseInPrice(double increase) {
     }
 }
 
-std::string Product::operator+(const std::string& str) {
-    return name_ + str;
+
+bool Product::operator>(const Product& ellipseObjPar) {
+    return (price_ > ellipseObjPar.price_) ? true : false;
 }
+
+bool Product::operator<(const Product& ellipseObjPar) {
+    return (price_ < ellipseObjPar.price_) ? true : false;
+}
+
+bool Product::operator==(const Product& ellipseObjPar) {
+    return (price_ == ellipseObjPar.price_) ? true : false;
+}
+
+bool Product::operator>=(const Product& ellipseObjPar) {
+    return (price_ >= ellipseObjPar.price_) ? true : false;
+}
+
+bool Product::operator<=(const Product& ellipseObjPar) {
+    return (price_ <= ellipseObjPar.price_) ? true : false;
+}
+
+std::string Product::operator+(const std::string& str) {
+    std::string result = "";
+    for (int i = 0; i < nameLen_; i++) {
+        result += name_[i];
+    }
+    return result + str;
+}
+
 
 // Функція не є методом класу:
 std::string operator+(std::string str, Product& customObj) {
     return str + customObj.getName();
 }
 
+
+void Product::printFields() {
+    using namespace std;
+    for (int i = 0; i < nameLen_; i++) {
+        std::cout << name_[i];
+    }
+    std::cout << setw(abs(20 - nameLen_)) << left << " ";
+    std::cout << setw(20) << left << price_
+        << setw(20) << left << quantityDelivery_
+        << setw(20) << left << soldForMonth_
+        << endl;
+
+}
+
 // value checks
 bool Product::checkName() {
-    if (name_.length() < 1) {
-        std::cout << "\nWrong stationName_ parameter. Should not be empty\n";
+    if (strlen(name_) < 1) {
+        std::cout << "\nWrong name_ parameter. Should not be empty\n";
         return false;
     }
     return true;
