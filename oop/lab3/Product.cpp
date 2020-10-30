@@ -90,15 +90,7 @@ Product::Product(const Product& product) {
 }
 
 Product::~Product() {
-    std::cout << "Destructor of ";
-    for (int i = 0; i < nameLen_; i++) {
-        std::cout << name_[i];
-    }
-    std::cout << std::endl;
-
-    if (checkName()) {
-        delete name_; // throw exception would be better
-    }
+    delete[] name_;
 }
 
 std::string Product::getName() {
