@@ -8,9 +8,9 @@
       </li>
     </ul>
   </li>
-    <li>
+  <li>
     <a href=https://github.com/qqlexa/kpi_labs/blob/main/oop/lab2>lab2</a>
-      <ul>
+    <ul>
         <li>
           <a href=https://github.com/qqlexa/kpi_labs/blob/main/oop/lab2/lab2.cpp>lab2.cpp</a>
         </li>
@@ -19,6 +19,20 @@
         </li>
         <li>
           <a href=https://github.com/qqlexa/kpi_labs/blob/main/oop/lab2/Product.cpp>Product.cpp</a>
+        </li>
+      </ul>
+  </li>
+  <li>
+    <a href=https://github.com/qqlexa/kpi_labs/blob/main/oop/lab3>lab3</a>
+    <ul>
+        <li>
+          <a href=https://github.com/qqlexa/kpi_labs/blob/main/oop/lab3/lab3.cpp>lab3.cpp</a>
+        </li>
+        <li>
+          <a href=https://github.com/qqlexa/kpi_labs/blob/main/oop/lab3/Product.h>Product.h</a>
+        </li>
+        <li>
+          <a href=https://github.com/qqlexa/kpi_labs/blob/main/oop/lab3/Product.cpp>Product.cpp</a>
         </li>
       </ul>
   </li>
