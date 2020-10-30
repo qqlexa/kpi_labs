@@ -118,10 +118,7 @@ Ellipse::Ellipse(const Ellipse& ellipse) {
 }
 
 Ellipse::~Ellipse() {
-	std::cout << "Destructor" << std::endl;
-	if (checkName()) {
-		delete name_; // throw exception would be better
-	}
+	delete[] name_;
 	
 }
 
@@ -291,7 +288,7 @@ std::string Ellipse::operator+(const std::string& str) {
 	return result + str;
 }
 
-// Ôóíêö³ÿ íå º ìåòîäîì êëàñó:
+// Ã”Ã³Ã­ÃªÃ¶Â³Ã¿ Ã­Ã¥ Âº Ã¬Ã¥Ã²Ã®Ã¤Ã®Ã¬ ÃªÃ«Ã Ã±Ã³:
 std::string operator+(std::string str, Ellipse& customObj) {
 	return str + customObj.getName();
 }
