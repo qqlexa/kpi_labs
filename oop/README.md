@@ -36,4 +36,18 @@
         </li>
       </ul>
   </li>
+  <li>
+    <a href=https://github.com/qqlexa/kpi_labs/blob/main/oop/lab4>lab4</a>
+    <ul>
+        <li>
+          <a href=https://github.com/qqlexa/kpi_labs/blob/main/oop/lab4/lab4.cpp>lab4.cpp</a>
+        </li>
+        <li>
+          <a href=https://github.com/qqlexa/kpi_labs/blob/main/oop/lab4/Product.h>Product.h</a>
+        </li>
+        <li>
+          <a href=https://github.com/qqlexa/kpi_labs/blob/main/oop/lab4/Product.cpp>Product.cpp</a>
+        </li>
+      </ul>
+  </li>
 </ul>
