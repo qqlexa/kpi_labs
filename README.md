@@ -1,4 +1,14 @@
 # kpi_labs
+<h1>II semester</h1>
+<ul>
+  <li>
+    <a href=https://github.com/qqlexa/complex_algorithms>Програмування складних алгоритмів</a> Колумбет В. П.
+  </li>
+  <li>
+    <a href=https://github.com/qqlexa/operation_systems>Операційні системи</a> Левченко Л. О.
+  </li>
+</ul>
+
 <h1>III semester</h1>
 <ul>
   <li>
