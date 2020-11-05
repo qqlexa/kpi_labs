@@ -38,8 +38,8 @@ while True:
     b. НЕ Канцерогенний
     0. вийти
     """)
-    # selected_type = input()
-    selected_type = "b"
+    selected_type = input()
+    # selected_type = "b"
     if "a" in selected_type or "b" in selected_type:
         pass
     elif "0" in selected_type:
@@ -51,20 +51,20 @@ while True:
 
     if "a" in selected_type:
         print("Введіть речовину")
-        # element_name = input()
-        element_name = "Азоту діоксид"
+        element_name = input()
+        # element_name = "Азоту діоксид"
         # Консоль
         if not element_name:
             continue
 
         # enter parameters
         print("LADD = [(Ca * Tout * Vout) + (Ch * Tin * Vin)] * EF * ED/(BW * AT * 365) ")
-        # ca = input_positive_float(f"Введіть концентрацію `{element_name}` в атмосферному повітрі, мг/куб.м")
-        ca = 0.95 * 10 ** -6
+        ca = input_positive_float(f"Введіть концентрацію `{element_name}` в атмосферному повітрі, мг/куб.м")
+        # ca = 0.95 * 10 ** -6
         print(f"Для пошуку концентрації `{element_name}` в повітрі приміщення")
-        # ch = input_positive_float(f"Введіть значення концентрації у відсотках від концетрації\n"
-        #                          f"`{element_name}` в атмосферному повітрі, [0-100]")
-        ch = 100
+        ch = input_positive_float(f"Введіть значення концентрації у відсотках від концетрації\n"
+                                  f"`{element_name}` в атмосферному повітрі, [0-100]")
+        # ch = 100
         if ch > 100:
             print(f"Введено некоректне число. Значення концентрації `{element_name}` в повітрі приміщення "
                   f"встановлено у відповідність до концентрації")
@@ -72,29 +72,29 @@ while True:
         else:
             ch = ca * ch / 100
 
-        # ef = input_positive_float("Введіть частоту впливу, днів/рік [1-365]")
-        ef = 350
+        ef = input_positive_float("Введіть частоту впливу, днів/рік [1-365]")
+        # ef = 350
         if ef > 365:
             print(
                 f"Введено некоректне число. Частота впливу встановлена в {Fore.LIGHTCYAN_EX}365 днів / рік{Fore.RESET}")
             ef = 365
 
-        # ed = input_positive_float("Введіть тривалість впливу, років")
-        ed = 30
+        ed = input_positive_float("Введіть тривалість впливу, років")
+        # ed = 30
 
-        # pop = input_positive_float("Введіть кількість населення в досліджуваному місті")
-        pop = 300_000
+        pop = input_positive_float("Введіть кількість населення в досліджуваному місті")
+        # pop = 300_000
         print(f"Період осереднення експозиції вводити не потрібно. "
               f"Для канцерогенів {Fore.LIGHTCYAN_EX}70 років{Fore.RESET}")
         at = 70
 
-        # age = input_positive_float("Введіть середній вік населення")
-        age = 30
+        age = input_positive_float("Введіть середній вік населення")
+        # age = 30
 
-        # vout = input_positive_float("Швидкість дихання поза приміщенням, куб.м/год")
-        vout = 1.4
-        # vin = input_positive_float("Швидкість дихання в приміщеннях, куб.м/год")
-        vin = 0.63
+        vout = input_positive_float("Швидкість дихання поза приміщенням, куб.м/год")
+        # vout = 1.4
+        vin = input_positive_float("Швидкість дихання в приміщеннях, куб.м/год")
+        # vin = 0.63
 
         user_answer = input("Бажаєте вводити середню масу тіла та час знаходження/відсутності\n"
                             "у приміщенням для вибраної категорії населення? (yes / no): ")
@@ -181,7 +181,7 @@ while True:
         else:
             print(f"За класифікацією рівнів ризику ВООЗ,  розрахований ризик буде\n"
                   f"{Fore.RED}ВИСОКИМ{Fore.RESET}, тобто не прийнятний для виробничих умов і населення;\n"
-                  f"Необхідне здійснення аходів з усунення або зниження ризик")
+                  f"Необхідне здійснення заходів з усунення або зниження ризик")
     else:
         # b
         elements_info = list()
@@ -244,8 +244,8 @@ while True:
                 print("Input again")
                 continue
 
-            # c = input_positive_float(f"Введіть концентрацію `{element_name}` в атмосферному повітрі, мг/куб.м")
-            c = 1
+            c = input_positive_float(f"Введіть концентрацію `{element_name}` в атмосферному повітрі, мг/куб.м")
+            # c = 1
             parameters = get_sql(""" SELECT * FROM "{table}" 
             WHERE "Речовина" LIKE "%{element_name}%" """.format(table="inhalation_effects", element_name=element_name))
 
