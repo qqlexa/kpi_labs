@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <string>
 #include <iomanip>
 #include "Product.h"
@@ -89,6 +89,19 @@ Product::Product(const Product& product) {
     checkIntegrity();
 }
 
+Product::Product(const Product* product) {
+    std::cout << "Copy constructor" << std::endl;
+    nameLen_ = product->nameLen_;
+    name_ = new char[nameLen_ + 1];
+    for (int i = 0; i < nameLen_; i++) {
+        name_[i] = product->name_[i];
+    }
+    price_ = product->price_;
+    quantityDelivery_ = product->quantityDelivery_;
+    soldForMonth_ = product->soldForMonth_;
+    checkIntegrity();
+}
+
 Product::~Product() {
     delete[] name_;
 }
@@ -173,8 +186,15 @@ bool Product::operator<(const Product& ellipseObjPar) {
     return (price_ < ellipseObjPar.price_) ? true : false;
 }
 
-bool Product::operator==(const Product& ellipseObjPar) {
-    return (price_ == ellipseObjPar.price_) ? true : false;
+bool Product::operator==(const Product& objPar) {
+    if (price_ != objPar.price_) return false;
+    if (soldForMonth_ != objPar.soldForMonth_) return false;
+    if (quantityDelivery_ != objPar.quantityDelivery_) return false;
+    if (nameLen_ != objPar.nameLen_) return false;
+    for (int i = 0; i < nameLen_; i++) {
+        if (name_[i] != objPar.name_[i]) return false;
+    }
+    return true;
 }
 
 bool Product::operator>=(const Product& ellipseObjPar) {
@@ -185,19 +205,19 @@ bool Product::operator<=(const Product& ellipseObjPar) {
     return (price_ <= ellipseObjPar.price_) ? true : false;
 }
 
-std::string Product::operator+(const std::string& str) {
-    std::string result = "";
-    for (int i = 0; i < nameLen_; i++) {
-        result += name_[i];
-    }
-    return result + str;
+Product Product::operator+(const float& price) {
+    Product product(this);
+    product.setPrice(price_ + price);
+    return product;
 }
 
 
-// Функція не є методом класу:
-std::string operator+(std::string str, Product& customObj) {
-    return str + customObj.getName();
+Product operator+(const float& price, Product& customObj) {
+    Product product(customObj);
+    product.setPrice(product.getPrice() + price);
+    return product;
 }
+
 
 Product::operator float() {
     return price_;
