@@ -46,7 +46,11 @@ public:
     bool operator>=(const Product&);
     bool operator<=(const Product&);
 
-    Product operator+(const float&);
+    Product& operator++();
+    Product operator++(int);
+
+    Product& operator--();
+    Product operator--(int);
 
     operator float();
 
@@ -57,7 +61,5 @@ private:
     bool checkSoldForMonth();     // checks soldForMonth_ is correct
     void checkIntegrity();        // checks everything
 };
-
-Product operator+(const float&, Product&);
 
 #endif //UNTITLED_PRODUCT_H
