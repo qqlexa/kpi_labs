@@ -19,6 +19,7 @@ public:
     Product(char* name, double price, int quantityDelivery, int soldForMonth);       // overload-constructor
     Product(std::string name, double price, int quantityDelivery, int soldForMonth); // overload-constructor
     Product(const Product&);                                                         // copy-constructor
+    Product(const Product*);                                                         // copy-constructor
 
     ~Product();                                                                      // destructor
 
@@ -45,7 +46,7 @@ public:
     bool operator>=(const Product&);
     bool operator<=(const Product&);
 
-    std::string operator+(const std::string&);
+    Product operator+(const float&);
 
     operator float();
 
@@ -57,6 +58,6 @@ private:
     void checkIntegrity();        // checks everything
 };
 
-std::string operator+(std::string, Product&);
+Product operator+(const float&, Product&);
 
 #endif //UNTITLED_PRODUCT_H
