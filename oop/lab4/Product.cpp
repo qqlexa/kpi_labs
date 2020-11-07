@@ -10,6 +10,7 @@ Product::Product() {
     for (int i = 0; i < name.length(); i++) {
         name_[i] = name[i];
     }
+    name_[nameLen_] = '\0';
     price_ = 0.0;
     quantityDelivery_ = 0;
     soldForMonth_ = 0;
@@ -30,6 +31,7 @@ Product::Product(std::string name, float price) {
     for (int i = 0; i < nameLen_; i++) {
         name_[i] = name[i];
     }
+    name_[nameLen_] = '\0';
     price_ = price;
     quantityDelivery_ = 0;
     soldForMonth_ = 0;
@@ -50,6 +52,7 @@ Product::Product(std::string name, float price, int quantityDelivery, int soldFo
     for (int i = 0; i < nameLen_; i++) {
         name_[i] = name[i];
     }
+    name_[nameLen_] = '\0';
     price_ = price;
     quantityDelivery_ = quantityDelivery;
     soldForMonth_ = soldForMonth;
@@ -70,6 +73,7 @@ Product::Product(std::string name, double price, int quantityDelivery, int soldF
     for (int i = 0; i < nameLen_; i++) {
         name_[i] = name[i];
     }
+    name_[nameLen_] = '\0';
     price_ = float(price);
     quantityDelivery_ = quantityDelivery;
     soldForMonth_ = soldForMonth;
@@ -77,10 +81,9 @@ Product::Product(std::string name, double price, int quantityDelivery, int soldF
 }
 
 Product::Product(const Product& product) {
-    std::cout << "Copy constructor" << std::endl;
     nameLen_ = product.nameLen_;
     name_ = new char[nameLen_ + 1];
-    for (int i = 0; i < nameLen_; i++) {
+    for (int i = 0; i < nameLen_ + 1; i++) {
         name_[i] = product.name_[i];
     }
     price_ = product.price_;
@@ -90,10 +93,9 @@ Product::Product(const Product& product) {
 }
 
 Product::Product(const Product* product) {
-    std::cout << "Copy constructor" << std::endl;
     nameLen_ = product->nameLen_;
     name_ = new char[nameLen_ + 1];
-    for (int i = 0; i < nameLen_; i++) {
+    for (int i = 0; i < nameLen_ + 1; i++) {
         name_[i] = product->name_[i];
     }
     price_ = product->price_;
@@ -117,6 +119,7 @@ void Product::setName(std::string name) {
     for (int i = 0; i < name.length(); i++) {
         name_[i] = name[i];
     }
+    name_[nameLen_] = '\0';
 
     if (!checkName()) {
         exit(1); // throw exception would be better
@@ -191,9 +194,7 @@ bool Product::operator==(const Product& objPar) {
     if (soldForMonth_ != objPar.soldForMonth_) return false;
     if (quantityDelivery_ != objPar.quantityDelivery_) return false;
     if (nameLen_ != objPar.nameLen_) return false;
-    for (int i = 0; i < nameLen_; i++) {
-        if (name_[i] != objPar.name_[i]) return false;
-    }
+    if (std::string(name_) != std::string(objPar.name_)) return false;
     return true;
 }
 
@@ -205,19 +206,31 @@ bool Product::operator<=(const Product& ellipseObjPar) {
     return (price_ <= ellipseObjPar.price_) ? true : false;
 }
 
-Product Product::operator+(const float& price) {
-    Product product(this);
-    product.setPrice(price_ + price);
-    return product;
+// Define prefix increment operator.
+Product& Product::operator++(){
+    price_++;
+    return *this;
 }
 
-
-Product operator+(const float& price, Product& customObj) {
-    Product product(customObj);
-    product.setPrice(product.getPrice() + price);
-    return product;
+// Define postfix increment operator.
+Product Product::operator++(int){
+    Product temp = *this;
+    ++*this;
+    return temp;
 }
 
+// Define prefix decrement operator.
+Product& Product::operator--(){
+    price_--;
+    return *this;
+}
+
+// Define postfix decrement operator.
+Product Product::operator--(int){
+    Product temp = *this;
+    --* this;
+    return temp;
+}
 
 Product::operator float() {
     return price_;
