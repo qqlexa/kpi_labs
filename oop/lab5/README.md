@@ -1,0 +1,2 @@
+# lab5
+Inheritance
