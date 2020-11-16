@@ -8,7 +8,7 @@
     <a href=https://github.com/qqlexa/operation_systems>Операційні системи</a> Левченко Л. О.
   </li>
   <li>
-    <a href=https://github.com/qqlexa/operation_systems>Проектування та аналіз обчислювальних алгоритмів</a> Шалденко О. В.
+    <a href=>Проектування та аналіз обчислювальних алгоритмів</a> Шалденко О. В.
   </li>
 </ul>
 
