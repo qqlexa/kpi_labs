@@ -12,5 +12,7 @@ int main(){
     Person me("Alex", "Hlavatsiy");
     cout << me.getDay() << endl;
 
+
+
     return 0;
 }
