@@ -4,47 +4,47 @@
 using namespace std;
 
 Person::Person() {
-	name_ = "Name";
+	firstname_ = "Name";
 	surname_ = "Surname";
 }
 
 Person::Person(string name, string surname) {
-	name_ = name;
+	firstname_ = name;
 	surname_ = surname;
 }
 
 Person::Person(string name, string surname, int year, int month, int day) : Date(year, month, day) {
-	name_ = name;
+	firstname_ = name;
 	surname_ = surname;
 }
 
 Person::Person(string name, string surname, Date* date) : Date(date) {
-	name_ = name;
+	firstname_ = name;
 	surname_ = surname;
 }
 
 Person::Person(string name, string surname, Date date) : Date(date) {
-	name_ = name;
+	firstname_ = name;
 	surname_ = surname;
 }
 
 Person::Person(Person& person): Date(person.getDate()){
-	name_ = person.name_;
+	firstname_ = person.firstname_;
 	surname_ = person.surname_;
 }
 
 Person::Person(Person* person): Date(person->getDate()) {
-	name_ = person->name_;
+	firstname_ = person->firstname_;
 	surname_ = person->surname_;
 }
 
 
-string Person::getName() {
-	return name_;
+string Person::getFirstname() {
+	return firstname_;
 }
 
-void Person::setName(string name) {
-	name_ = name;
+void Person::setFirstname(string name) {
+	firstname_ = name;
 }
 
 string Person::getSurname() {

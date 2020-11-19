@@ -8,7 +8,7 @@ class Person :
     public Date
 {
 private:
-    string name_;
+    string firstname_;
     string surname_;
 
 public:
@@ -21,8 +21,8 @@ public:
     Person(Person&);
     Person(Person*);
 
-    string getName();
-    void setName(string);
+    string getFirstname();
+    void setFirstname(string);
 
 
     string getSurname();
