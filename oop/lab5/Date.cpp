@@ -62,7 +62,6 @@ void Date::setDay(int day) {
 		limitDay = 30;
 		break;
 	}
-	cout << limitDay << endl;
 	day_ = (day > 0 && day <= limitDay) ? day : 1;
 }
 
