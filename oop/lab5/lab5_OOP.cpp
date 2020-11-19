@@ -21,6 +21,8 @@ int main(){
 
     Person he(me);
     std::cout << "He was born in " << he.getDay() << "." << he.getMonth() << "." << he.getYear() << endl;
+    
+    Author writer();
 
     return 0;
 }
