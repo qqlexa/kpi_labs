@@ -3,5 +3,9 @@
 class AuthorStudent :
     public Author
 {
+public:
+    AuthorStudent();
+    AuthorStudent(Author&);
+    AuthorStudent(Author*);
 };
 

@@ -14,7 +14,7 @@ enum class Post {
 };
 
 class Author :
-    public Person
+    virtual public Person
 {
 private:
     Post post_;
