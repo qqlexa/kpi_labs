@@ -5,7 +5,7 @@
 using namespace std;
 
 class Person :
-    public Date
+    virtual public Date
 {
 private:
     string firstname_;

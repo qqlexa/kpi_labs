@@ -2,6 +2,7 @@
 #include "Date.h"
 #include "Person.h"
 #include "Author.h"
+#include "Thesis.h"
 
 using namespace std;
 
@@ -22,7 +23,7 @@ int main(){
     Person he(me);
     std::cout << "He was born in " << he.getDay() << "." << he.getMonth() << "." << he.getYear() << endl;
     
-    Author writer();
-
+    Author writer(me, Post::STUDENT);
+    std::cout << "He was born in " << he.getDay() << "." << he.getMonth() << "." << he.getYear() << endl;
     return 0;
 }

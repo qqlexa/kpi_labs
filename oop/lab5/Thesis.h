@@ -7,7 +7,7 @@
 using namespace std;
 
 class Thesis :
-    public Date,
+    virtual public Date,
     public AuthorStudent,
     public AuthorBoss
 {
@@ -20,6 +20,9 @@ public:
     Thesis();
     Thesis(Date, AuthorStudent, AuthorBoss);
     Thesis(Date, AuthorStudent, AuthorBoss, string, int, int, float);
+
+    Thesis(Thesis&);
+    Thesis(Thesis*);
 
     string getName();
     void setName(string);

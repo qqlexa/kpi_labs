@@ -14,11 +14,28 @@ Thesis::Thesis(Date, AuthorStudent, AuthorBoss) {
     amountLists_ = 0;
 }
 
-Thesis::Thesis(Date, AuthorStudent, AuthorBoss, string, int, int, float) {
-    name_ = "Thesis";
-    countDraws_ = 0;
-    countLinks_ = 0;
-    amountLists_ = 0;
+Thesis::Thesis(Date date, AuthorStudent authorStudent, AuthorBoss authorBoss, string name, int countDraws, int countLinks, float amountLists) :
+    Date(date),
+    AuthorStudent(authorStudent),
+    AuthorBoss(authorBoss) {
+    name_ = name;
+    countDraws_ = countDraws;
+    countLinks_ = countLinks;
+    amountLists_ = amountLists;
+}
+
+Thesis::Thesis(Thesis& thesis) : Date(thesis.getDate()), AuthorStudent(thesis.AuthorStudent::getAuthor()), AuthorBoss(thesis.AuthorBoss::getAuthor()) {
+    name_ = thesis.name_;
+    countDraws_ = thesis.countDraws_;
+    countLinks_ = thesis.countLinks_;
+    amountLists_ = thesis.amountLists_;
+}
+
+Thesis::Thesis(Thesis* thesis) : Date(thesis->getDate()), AuthorStudent(thesis->AuthorStudent::getAuthor()), AuthorBoss(thesis->AuthorBoss::getAuthor()) {
+    name_ = thesis->name_;
+    countDraws_ = thesis->countDraws_;
+    countLinks_ = thesis->countLinks_;
+    amountLists_ = thesis->amountLists_;
 }
 
 string Thesis::getName() {
