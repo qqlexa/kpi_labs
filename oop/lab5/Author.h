@@ -21,9 +21,16 @@ private:
 public:
     Author();
     Author(string, string, Post);
-    Author(string, string, Post, int, int, int);
+    Author(string, string, int, int, int, Post);
+    Author(string, string, Date, Post);
+    Author(Person, Post);
+
+    Author(Author&);
+    Author(Author*);
 
     Post getPost();
     void setPost(Post);
+
+    Author& getAuthor();
 };
 
