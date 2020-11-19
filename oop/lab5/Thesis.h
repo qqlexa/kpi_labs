@@ -1,13 +1,15 @@
 #pragma once
 #include <iostream>
 #include "Date.h"
-#include "Author.h"
+#include "AuthorStudent.h"
+#include "AuthorBoss.h"
 
 using namespace std;
 
 class Thesis :
     public Date,
-    public Author
+    public AuthorStudent,
+    public AuthorBoss
 {
 private:
     string name_;
@@ -16,7 +18,21 @@ private:
     float amountLists_;
 public:
     Thesis();
-    Thesis(Date, Author);
-    Thesis(Date, Author, string, int, int, int);
+    Thesis(Date, AuthorStudent, AuthorBoss);
+    Thesis(Date, AuthorStudent, AuthorBoss, string, int, int, float);
+
+    string getName();
+    void setName(string);
+
+    int getCountDraws();
+    void setCountDraws(int);
+
+    int getCountLinks();
+    void setCountLinks(int);
+
+    float getAmountLists();
+    void setAmountLists(float);
+
+    Thesis& getThesis();
 };
 
