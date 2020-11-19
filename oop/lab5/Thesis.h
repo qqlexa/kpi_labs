@@ -2,14 +2,12 @@
 #include <iostream>
 #include "Date.h"
 #include "Author.h"
-#include "Author2.h"
 
 using namespace std;
 
 class Thesis :
     public Date,
-    public Author,
-    public Author2
+    public Author
 {
 private:
     string name_;
@@ -18,7 +16,7 @@ private:
     float amountLists_;
 public:
     Thesis();
-    Thesis(Date, Author, Author2);
-    Thesis(Date, Author, Author2, string, int, int, int);
+    Thesis(Date, Author);
+    Thesis(Date, Author, string, int, int, int);
 };
 
