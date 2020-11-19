@@ -16,6 +16,19 @@ Date::Date(int year, int month, int day) {
 	setDay(day);
 }
 
+Date::Date(Date& date) {
+	year_ = date.year_;
+	month_ = date.month_;
+	day_ = date.day_;
+}
+
+Date::Date(Date* date) {
+	year_ = date->year_;
+	month_ = date->month_;
+	day_ = date->day_;
+}
+
+
 int Date::getYear() {
 	return year_;
 }
@@ -65,8 +78,12 @@ void Date::setDay(int day) {
 	day_ = (day > 0 && day <= limitDay) ? day : 1;
 }
 
-void Date::set(int year, int month, int day) {
+void Date::setDate(int year, int month, int day) {
 	setYear(year);
 	setMonth(month);
 	setDay(day);
+}
+
+Date& Date::getDate() {
+	return *this;
 }

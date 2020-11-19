@@ -9,6 +9,9 @@ public:
     Date();
     Date(int, int, int);
 
+    Date(Date&);
+    Date(Date*);
+
     int getYear();
     void setYear(int);
 
@@ -18,7 +21,9 @@ public:
     int getDay();
     void setDay(int);
 
-    void set(int, int, int);
+    void setDate(int, int, int);
+    
+    Date& getDate();
 
     // virtual void show() = 0;
 };
