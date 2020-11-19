@@ -28,7 +28,6 @@ Date::Date(Date* date) {
 	day_ = date->day_;
 }
 
-
 int Date::getYear() {
 	return year_;
 }
