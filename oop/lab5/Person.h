@@ -15,6 +15,11 @@ public:
     Person();
     Person(string, string);
     Person(string, string, int, int, int);
+    Person(string, string, Date);
+    Person(string, string, Date*);
+
+    Person(Person&);
+    Person(Person*);
 
     string getName();
     void setName(string);
@@ -22,5 +27,7 @@ public:
 
     string getSurname();
     void setSurname(string);
+
+    Person& getPerson();
 };
 
