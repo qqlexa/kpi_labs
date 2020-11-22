@@ -7,7 +7,30 @@ Thesis::Thesis() {
     amountLists_ = 0;
 }
 
-Thesis::Thesis(Date, AuthorStudent, AuthorBoss) {
+Thesis::Thesis(Date* date, AuthorStudent* authorStudent, AuthorBoss* authorBoss) :
+    Date(date),
+    AuthorStudent(authorStudent),
+    AuthorBoss(authorBoss) {
+    name_ = "Thesis";
+    countDraws_ = 0;
+    countLinks_ = 0;
+    amountLists_ = 0;
+}
+
+Thesis::Thesis(Date* date, AuthorStudent* authorStudent, AuthorBoss* authorBoss, string name, int countDraws, int countLinks, float amountLists) :
+    Date(date),
+    AuthorStudent(authorStudent),
+    AuthorBoss(authorBoss) {
+    name_ = name;
+    countDraws_ = countDraws;
+    countLinks_ = countLinks;
+    amountLists_ = amountLists;
+}
+
+Thesis::Thesis(Date date, AuthorStudent authorStudent, AuthorBoss authorBoss): 
+    Date(date),
+    AuthorStudent(authorStudent),
+    AuthorBoss(authorBoss) {
     name_ = "Thesis";
     countDraws_ = 0;
     countLinks_ = 0;

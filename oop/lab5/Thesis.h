@@ -19,7 +19,9 @@ private:
 public:
     Thesis();
     Thesis(Date, AuthorStudent, AuthorBoss);
+    Thesis(Date*, AuthorStudent*, AuthorBoss*);
     Thesis(Date, AuthorStudent, AuthorBoss, string, int, int, float);
+    Thesis(Date*, AuthorStudent*, AuthorBoss*, string, int, int, float);
 
     Thesis(Thesis&);
     Thesis(Thesis*);
