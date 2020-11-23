@@ -7,11 +7,11 @@
 using namespace std;
 
 class Thesis :
-    virtual public Date,
     public AuthorStudent,
     public AuthorBoss
 {
 private:
+    Date createdThesis_;
     string name_;
     int countDraws_;
     int countLinks_;
@@ -25,6 +25,8 @@ public:
 
     Thesis(Thesis&);
     Thesis(Thesis*);
+    Thesis(const Thesis&);
+    Thesis(const Thesis*);
 
     string getName();
     void setName(string);

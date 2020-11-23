@@ -47,14 +47,32 @@ Thesis::Thesis(Date date, AuthorStudent authorStudent, AuthorBoss authorBoss, st
     amountLists_ = amountLists;
 }
 
-Thesis::Thesis(Thesis& thesis) : Date(thesis.getDate()), AuthorStudent(thesis.AuthorStudent::getAuthor()), AuthorBoss(thesis.AuthorBoss::getAuthor()) {
+Thesis::Thesis(const Thesis& thesis) {
+    createdThesis_ = thesis.createdThesis_;
     name_ = thesis.name_;
     countDraws_ = thesis.countDraws_;
     countLinks_ = thesis.countLinks_;
     amountLists_ = thesis.amountLists_;
 }
 
-Thesis::Thesis(Thesis* thesis) : Date(thesis->getDate()), AuthorStudent(thesis->AuthorStudent::getAuthor()), AuthorBoss(thesis->AuthorBoss::getAuthor()) {
+Thesis::Thesis(const Thesis* thesis) {
+    createdThesis_ = thesis->createdThesis_;
+    name_ = thesis->name_;
+    countDraws_ = thesis->countDraws_;
+    countLinks_ = thesis->countLinks_;
+    amountLists_ = thesis->amountLists_;
+}
+
+Thesis::Thesis(Thesis& thesis) : AuthorStudent(thesis.AuthorStudent::getAuthor()), AuthorBoss(thesis.AuthorBoss::getAuthor()) {
+    createdThesis_ = thesis.createdThesis_;
+    name_ = thesis.name_;
+    countDraws_ = thesis.countDraws_;
+    countLinks_ = thesis.countLinks_;
+    amountLists_ = thesis.amountLists_;
+}
+
+Thesis::Thesis(Thesis* thesis) : AuthorStudent(thesis->AuthorStudent::getAuthor()), AuthorBoss(thesis->AuthorBoss::getAuthor()) {
+    createdThesis_ = thesis->createdThesis_;
     name_ = thesis->name_;
     countDraws_ = thesis->countDraws_;
     countLinks_ = thesis->countLinks_;
