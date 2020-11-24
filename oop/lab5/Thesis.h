@@ -26,11 +26,14 @@ public:
     Thesis(Thesis&);
     Thesis(Thesis*);
 
-    Author getAuthorStudent();
-    void setAuthorStudent(Author);
+    Thesis(const Thesis&);
+    Thesis(const Thesis*);
 
-    Author getAuthorBoss();
-    void setAuthorBoss(Author);
+    Author& getAuthorStudent();
+    void setAuthorStudent(Author&);
+
+    Author& getAuthorBoss();
+    void setAuthorBoss(Author&);
 
     string getDrawName();
     void setDrawName(string);

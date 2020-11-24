@@ -1,33 +1,26 @@
 #include <iostream>
-#include "ThesisComposition.h"
 #include <vector>
+
+#include "Thesis.h"
+#include "ThesisComposition.h"
 
 using namespace std;
 
 
 int main() {
-    Date today;
-    Person me("Alexey", "Hlavatskiy");
-    Person teacher("Anton", "Kasyanov");
 
-    Author aMe(me, Post::STUDENT);
-    Author aTeacher(me, Post::TEACHER);
+    Thesis thesis1;
+    thesis1.setDrawName("Cool thesis!");
+    Thesis thesis2(thesis1);
 
-    Thesis thesis1(today, aMe, aTeacher);
-    cout << 
-        thesis1.getCountDraws() << endl <<
-        thesis1.getCountLinks() << endl << 
-        thesis1.getAmountLists() << endl;
+    Thesis thesis3(1, 1, 2000,
+        "Name1", "SurName1", 2, 1, 2000, Post::STUDENT, 
+        "Name2", "SurName2", 3, 1, 2000, Post::MASTER, 
+        "DrawName3", 2, 3, 7.5);
 
-    aTeacher.setPost(Post::ASSISTANT);
-    Thesis thesis2(today, aMe, aTeacher);
+    vector<Thesis> compositions = { thesis1, thesis2, thesis3 };
 
-    aTeacher.setPost(Post::DOCENT);
-    Thesis thesis3(today, aMe, aTeacher);
-
-    vector<Thesis> compositions = {thesis1, thesis2, thesis3};
-
-    ThesisComposition thesisComposition(compositions, today);
-    
+    ThesisComposition thesisComposition(compositions, 12, 12, 2012);
+    thesisComposition.printCompositionInfo();
     return 0;
 }
