@@ -1,29 +1,18 @@
 #pragma once
-#include "Person.h"
 #include <iostream>
 
-enum class Post {
-    STUDENT,       // 0
-    SPECIALIST,    // 1
-    MASTER,        // 2
-    POSTGRADUATE,  // 3
-    ASSISTANT,     // 4
-    TEACHER,       // 5
-    DOCENT,        // 6
-    PROFESSOR,     // 7
-};
+#include "Person.h"
+#include "Post.h"
+
 
 class Author :
-    virtual public Person
+    public Person
 {
-private:
+protected:
     Post post_;
 public:
     Author();
-    Author(string, string, Post);
     Author(string, string, int, int, int, Post);
-    Author(string, string, Date, Post);
-    Author(Person, Post);
 
     Author(Author&);
     Author(Author*);
@@ -31,6 +20,5 @@ public:
     Post getPost();
     void setPost(Post);
 
-    Author& getAuthor();
 };
 
