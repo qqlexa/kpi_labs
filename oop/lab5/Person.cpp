@@ -4,57 +4,38 @@
 using namespace std;
 
 Person::Person() {
-	firstname_ = "Name";
-	surname_ = "Surname";
+	firstName_ = "Name";
+	secondName_ = "SecondName";
 }
 
-Person::Person(string name, string surname) {
-	firstname_ = name;
-	surname_ = surname;
+Person::Person(string name, string secondName, int year, int month, int day) : Date(year, month, day) {
+	firstName_ = name;
+	secondName_ = secondName;
 }
 
-Person::Person(string name, string surname, int year, int month, int day) : Date(year, month, day) {
-	firstname_ = name;
-	surname_ = surname;
+Person::Person(Person& person){
+	firstName_ = person.firstName_;
+	secondName_ = person.secondName_;
 }
 
-Person::Person(string name, string surname, Date* date) : Date(date) {
-	firstname_ = name;
-	surname_ = surname;
-}
-
-Person::Person(string name, string surname, Date date) : Date(date) {
-	firstname_ = name;
-	surname_ = surname;
-}
-
-Person::Person(Person& person): Date(person.getDate()){
-	firstname_ = person.firstname_;
-	surname_ = person.surname_;
-}
-
-Person::Person(Person* person): Date(person->getDate()) {
-	firstname_ = person->firstname_;
-	surname_ = person->surname_;
+Person::Person(Person* person){
+	firstName_ = person->firstName_;
+	secondName_ = person->secondName_;
 }
 
 
-string Person::getFirstname() {
-	return firstname_;
+string Person::getFirstName() {
+	return firstName_;
 }
 
-void Person::setFirstname(string name) {
-	firstname_ = name;
+void Person::setFirstName(string name) {
+	firstName_ = name;
 }
 
-string Person::getSurname() {
-	return surname_;
+string Person::getSecondName() {
+	return secondName_;
 }
 
-void Person::setSurname(string surname) {
-	surname_ = surname;
-}
-
-Person& Person::getPerson() {
-	return *this;
+void Person::setSecondName(string secondName) {
+	secondName_ = secondName;
 }
