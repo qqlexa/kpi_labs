@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>
+
 #include "Thesis.h"
 #include "Date.h"
 
@@ -10,11 +11,13 @@ class ThesisComposition :
     public Date
 {
 private:
-    vector<Thesis> composition_;
+    vector<Thesis> thesisComposition_;
     int countLists_;
 public:
     ThesisComposition();
-    ThesisComposition(vector<Thesis>, Date, int countLists=0);
+    ThesisComposition(vector<Thesis>, 
+        int, int, int,               // Date
+        int countLists=0);
 
     ThesisComposition(ThesisComposition&);
     ThesisComposition(ThesisComposition*);
