@@ -1,90 +1,69 @@
 #include "Thesis.h"
 
 Thesis::Thesis() {
-    name_ = "Thesis";
+    authorStudent_ = Author();
+    authorBoss_ = Author();
+
+    drawName_ = "drawName";
     countDraws_ = 0;
     countLinks_ = 0;
     amountLists_ = 0;
 }
 
-Thesis::Thesis(Date* date, AuthorStudent* authorStudent, AuthorBoss* authorBoss) :
-    Date(date),
-    AuthorStudent(authorStudent),
-    AuthorBoss(authorBoss) {
-    name_ = "Thesis";
-    countDraws_ = 0;
-    countLinks_ = 0;
-    amountLists_ = 0;
-}
+Thesis::Thesis(int year, int month, int day,
+    string firstName1, string secondName1, int year1, int month1, int day1, Post post1,
+    string firstName2, string secondName2, int year2, int month2, int day2, Post post2,
+    string drawName, int countDraws, int countLinks, float amountLists): Date(year, month, day){
 
-Thesis::Thesis(Date* date, AuthorStudent* authorStudent, AuthorBoss* authorBoss, string name, int countDraws, int countLinks, float amountLists) :
-    Date(date),
-    AuthorStudent(authorStudent),
-    AuthorBoss(authorBoss) {
-    name_ = name;
+    authorStudent_ = Author(firstName1, secondName1, year1, month1, day1, post1);
+    authorBoss_ = Author(firstName2, secondName2, year2, month2, day2, post2);
+
+    drawName_ = drawName;
     countDraws_ = countDraws;
     countLinks_ = countLinks;
     amountLists_ = amountLists;
 }
 
-Thesis::Thesis(Date date, AuthorStudent authorStudent, AuthorBoss authorBoss): 
-    Date(date),
-    AuthorStudent(authorStudent),
-    AuthorBoss(authorBoss) {
-    name_ = "Thesis";
-    countDraws_ = 0;
-    countLinks_ = 0;
-    amountLists_ = 0;
-}
-
-Thesis::Thesis(Date date, AuthorStudent authorStudent, AuthorBoss authorBoss, string name, int countDraws, int countLinks, float amountLists) :
-    Date(date),
-    AuthorStudent(authorStudent),
-    AuthorBoss(authorBoss) {
-    name_ = name;
-    countDraws_ = countDraws;
-    countLinks_ = countLinks;
-    amountLists_ = amountLists;
-}
-
-Thesis::Thesis(const Thesis& thesis) {
-    createdThesis_ = thesis.createdThesis_;
-    name_ = thesis.name_;
+Thesis::Thesis(Thesis& thesis) {
+    authorStudent_ = thesis.authorStudent_;
+    authorBoss_ = thesis.authorBoss_;
+    drawName_ = thesis.drawName_;
     countDraws_ = thesis.countDraws_;
     countLinks_ = thesis.countLinks_;
     amountLists_ = thesis.amountLists_;
 }
 
-Thesis::Thesis(const Thesis* thesis) {
-    createdThesis_ = thesis->createdThesis_;
-    name_ = thesis->name_;
+Thesis::Thesis(Thesis* thesis) {
+    authorStudent_ = thesis->authorStudent_;
+    authorBoss_ = thesis->authorBoss_;
+    drawName_ = thesis->drawName_;
     countDraws_ = thesis->countDraws_;
     countLinks_ = thesis->countLinks_;
     amountLists_ = thesis->amountLists_;
 }
 
-Thesis::Thesis(Thesis& thesis) : AuthorStudent(thesis.AuthorStudent::getAuthor()), AuthorBoss(thesis.AuthorBoss::getAuthor()) {
-    createdThesis_ = thesis.createdThesis_;
-    name_ = thesis.name_;
-    countDraws_ = thesis.countDraws_;
-    countLinks_ = thesis.countLinks_;
-    amountLists_ = thesis.amountLists_;
+Author Thesis::getAuthorStudent() {
+    return authorStudent_;
 }
 
-Thesis::Thesis(Thesis* thesis) : AuthorStudent(thesis->AuthorStudent::getAuthor()), AuthorBoss(thesis->AuthorBoss::getAuthor()) {
-    createdThesis_ = thesis->createdThesis_;
-    name_ = thesis->name_;
-    countDraws_ = thesis->countDraws_;
-    countLinks_ = thesis->countLinks_;
-    amountLists_ = thesis->amountLists_;
+void Thesis::setAuthorStudent(Author authorStudent) {
+    authorStudent_ = authorStudent;
 }
 
-string Thesis::getName() {
-    return name_;
+Author Thesis::getAuthorBoss() {
+    return authorBoss_;
 }
 
-void Thesis::setName(string name) {
-    name_ = name;
+void Thesis::setAuthorBoss(Author authorBoss) {
+    authorBoss_ = authorBoss;
+}
+
+string Thesis::getDrawName() {
+    return drawName_;
+}
+
+void Thesis::setDrawName(string drawName) {
+    drawName_ = drawName;
 }
 
 
@@ -110,8 +89,4 @@ float Thesis::getAmountLists() {
 
 void Thesis::setAmountLists(float amountLists) {
     amountLists_ = (amountLists > 0) ? amountLists : 0;
-}
-
-Thesis& Thesis::getThesis() {
-    return *this;
 }

@@ -1,35 +1,39 @@
 #pragma once
 #include <iostream>
+
 #include "Date.h"
-#include "AuthorStudent.h"
-#include "AuthorBoss.h"
+#include "Author.h"
 
 using namespace std;
 
 class Thesis :
-    public AuthorStudent,
-    public AuthorBoss
+    virtual public Date
 {
-private:
-    Date createdThesis_;
-    string name_;
+protected:
+    Author authorStudent_;
+    Author authorBoss_;
+    string drawName_;
     int countDraws_;
     int countLinks_;
     float amountLists_;
 public:
     Thesis();
-    Thesis(Date, AuthorStudent, AuthorBoss);
-    Thesis(Date*, AuthorStudent*, AuthorBoss*);
-    Thesis(Date, AuthorStudent, AuthorBoss, string, int, int, float);
-    Thesis(Date*, AuthorStudent*, AuthorBoss*, string, int, int, float);
+    Thesis(int, int, int,                       // Date
+        string, string, int, int, int, Post,    // AuthorStudent
+        string, string, int, int, int, Post,    // AuthorBoss 
+        string, int, int, float);               // name, countDraws, countLinks, amountLists
 
     Thesis(Thesis&);
     Thesis(Thesis*);
-    Thesis(const Thesis&);
-    Thesis(const Thesis*);
 
-    string getName();
-    void setName(string);
+    Author getAuthorStudent();
+    void setAuthorStudent(Author);
+
+    Author getAuthorBoss();
+    void setAuthorBoss(Author);
+
+    string getDrawName();
+    void setDrawName(string);
 
     int getCountDraws();
     void setCountDraws(int);
@@ -39,7 +43,5 @@ public:
 
     float getAmountLists();
     void setAmountLists(float);
-
-    Thesis& getThesis();
 };
 
