@@ -46,3 +46,15 @@ int ThesisComposition::getCountLists() {
 void ThesisComposition::setCountLists(int countLists){
 	countLists_ = countLists;
 }
+
+void ThesisComposition::printCompositionInfo() {
+	for (Thesis thesis : thesisComposition_) {
+		cout << "Draw name: " <<  thesis.getDrawName() << endl;
+		cout << "Author student name: " <<  thesis.getAuthorStudent().getFirstName() << endl;
+		cout << "Author boss name: " <<  thesis.getAuthorBoss().getFirstName() << endl;
+		cout << "Count draws: " <<  thesis.getCountDraws() << endl;
+		cout << "Count links: " <<  thesis.getCountLinks() << endl;
+		cout << "Amount lists: " <<  thesis.getAmountLists() << endl;
+		cout << endl;
+	}
+}

@@ -10,7 +10,7 @@ using namespace std;
 class ThesisComposition :
     public Date
 {
-private:
+protected:
     vector<Thesis> thesisComposition_;
     int countLists_;
 public:
@@ -29,5 +29,7 @@ public:
 
     int getCountLists();
     void setCountLists(int);
+
+    void printCompositionInfo();
 };
 
