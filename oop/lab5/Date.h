@@ -1,7 +1,7 @@
 #pragma once
 class Date
 {
-private:
+protected:
 	int year_;
 	int month_;
 	int day_;
@@ -22,8 +22,6 @@ public:
     void setDay(int);
 
     void setDate(int, int, int);
-    
-    Date& getDate();
 
     // virtual void show() = 0;
 };

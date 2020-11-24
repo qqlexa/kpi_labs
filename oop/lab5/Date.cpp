@@ -82,7 +82,3 @@ void Date::setDate(int year, int month, int day) {
 	setMonth(month);
 	setDay(day);
 }
-
-Date& Date::getDate() {
-	return *this;
-}
