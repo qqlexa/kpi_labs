@@ -4,36 +4,38 @@ ThesisComposition::ThesisComposition() {
 	countLists_ = 0;
 }
 
-ThesisComposition::ThesisComposition(vector<Thesis> composition, Date date, int countLists): Date(date) {
+ThesisComposition::ThesisComposition(vector<Thesis> composition, int year, int month, int day, int countLists): Date(year, month, day) {
 	setComposition(composition);
 	countLists_ = (countLists > 0) ? countLists : 0;
 }
 
-ThesisComposition::ThesisComposition(ThesisComposition& thesisComposition): Date(thesisComposition.getDate()) {
-
+ThesisComposition::ThesisComposition(ThesisComposition& thesisComposition){
+	setComposition(thesisComposition.thesisComposition_);
+	countLists_ = thesisComposition.countLists_;
 }
 
-ThesisComposition::ThesisComposition(ThesisComposition* thesisComposition) : Date(thesisComposition->getDate()) {
-
+ThesisComposition::ThesisComposition(ThesisComposition* thesisComposition){
+	setComposition(thesisComposition->thesisComposition_);
+	countLists_ = thesisComposition->countLists_;
 }
 
 vector<Thesis> ThesisComposition::getComposition() {
-	return composition_;
+	return thesisComposition_;
 }
 
 void ThesisComposition::setComposition(vector<Thesis> composition) {
-	composition_.clear();
+	thesisComposition_.clear();
 	for (Thesis thesis : composition) {
-		composition_.push_back(thesis);
+		thesisComposition_.push_back(thesis);
 	}
 }
 
 void ThesisComposition::appendComposition(Thesis thesis) {
-	composition_.push_back(thesis);
+	thesisComposition_.push_back(thesis);
 }
 
 void ThesisComposition::clearComposition() {
-	composition_.clear();
+	thesisComposition_.clear();
 }
 
 
