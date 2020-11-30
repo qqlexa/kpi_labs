@@ -1,0 +1,27 @@
+#pragma once
+#include <iostream>
+#include "DishCategory.h"
+
+using namespace std;
+
+class Dish :
+    public DishCategory
+{
+protected:
+    string name_;
+    float price_;
+public:
+    Dish();
+    Dish(string, float, DishType);
+
+    ~Dish();
+
+    string getName();
+    void setName(string);
+
+    float getPrice();
+    void setPrice(float);
+    
+    virtual void show();
+};
+
