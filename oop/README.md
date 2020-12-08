@@ -63,4 +63,16 @@
     </ul>
   </li>
   
+  <li>
+    <a href=https://github.com/qqlexa/kpi_labs/blob/main/oop/lab6>lab6</a>
+    <ul>
+      <li>
+        <a href=https://github.com/qqlexa/kpi_labs/blob/main/oop/lab6/lab6.cpp>lab6.cpp</a>
+      </li>
+      <li>
+        <a href=https://github.com/qqlexa/kpi_labs/blob/main/oop/lab6/lab6_OOP.cpp>lab6_OOP.cpp</a>
+      </li>
+    </ul>
+  </li>
+  
 </ul>
