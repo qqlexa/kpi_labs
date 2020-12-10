@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "Date.h"
+#include "Sex.h"
 
 using namespace std;
 
@@ -11,13 +12,13 @@ class Person :
 protected:
     string firstName_;
     string secondName_;
+    Sex personSex_;
 
 public:
     Person();
-    Person(string, string, int, int, int);
+    Person(string, string, Sex, int, int, int);
 
     Person(Person&);
-    ~Person();
 
     string getFirstName();
     void setFirstName(string);
@@ -25,6 +26,9 @@ public:
 
     string getSecondName();
     void setSecondName(string);
+
+    Sex getPersonSex();
+    void setPersonSex(Sex);
 
     virtual void show();
 };
