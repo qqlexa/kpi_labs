@@ -22,6 +22,7 @@ Date::Date(Date& date) {
 	day_ = date.day_;
 }
 
+
 int Date::getYear() {
 	return year_;
 }
@@ -43,10 +44,6 @@ int Date::getDay() {
 }
 
 void Date::setDay(int day) {
-	// 01 03 05 07 08 10 12 - 31
-	// 04 06 11             - 30
-	// 02 2017, 2018, 2019  - 28
-	// 02 2016, 2020        - 29
 	int limitDay;
 	switch (month_) {
 	case 2:
@@ -75,4 +72,8 @@ void Date::setDate(int year, int month, int day) {
 	setYear(year);
 	setMonth(month);
 	setDay(day);
+}
+
+void Date::show() {
+	cout << "Date: " << day_ << "." << month_ << "." << year_ << endl;
 }
