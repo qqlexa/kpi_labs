@@ -12,10 +12,9 @@ Waiter::Waiter(string name, string surname, Sex sex, int year, int month, int da
 
 }
 
-Waiter::~Waiter() {
-	show();
-}
 
 void Waiter::show() {
-	cout << "Waiter.show()" << endl;
+	Person::show();
+	Category::show();
+	Date::show();
 }

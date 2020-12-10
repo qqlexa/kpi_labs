@@ -13,10 +13,6 @@ DishCategory::DishCategory(DishType dishType) {
 	dishType_ = dishType;
 }
 
-DishCategory::~DishCategory() {
-	show();
-}
-
 DishType DishCategory::getDishType() {
 	return dishType_;
 }

@@ -73,3 +73,7 @@ void Date::setDate(int year, int month, int day) {
 	setMonth(month);
 	setDay(day);
 }
+
+void Date::show() {
+	cout << "Date: " << day_ << "." << month_ << "." << year_ << endl;
+}

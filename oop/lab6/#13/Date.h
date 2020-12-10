@@ -22,6 +22,6 @@ public:
 
     void setDate(int, int, int);
 
-    virtual void show() = 0;
+    virtual void show();
 };
 

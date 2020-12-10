@@ -21,8 +21,6 @@ public:
 
     Order(Order&);
 
-    ~Order();
-
     vector<Dish> getDishList();
     void setDishList(vector<Dish>);
     void appendDishList(Dish);

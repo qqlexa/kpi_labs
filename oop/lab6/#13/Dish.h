@@ -14,8 +14,6 @@ public:
     Dish();
     Dish(string, float, DishType);
 
-    ~Dish();
-
     string getName();
     void setName(string);
 

@@ -20,10 +20,6 @@ Person::Person(Person& person) {
 	secondName_ = person.secondName_;
 }
 
-Person::~Person() {
-	show();
-}
-
 string Person::getFirstName() {
 	return firstName_;
 }
@@ -49,5 +45,16 @@ void Person::setPersonSex(Sex personSex) {
 }
 
 void Person::show() {
-	cout << "Person.show()" << endl;
+	cout << "firstName_: " << firstName_ << endl << "secondName_: " << secondName_ << endl;
+	cout << "Sex: ";
+	switch (personSex_) {
+	case Sex::FEMALE: {
+		cout << "Female" << endl;
+	} break;
+	case Sex::MALE: {
+		cout << "Male" << endl;
+	} break;
+	default: break;
+	}
+	Date::show();
 }

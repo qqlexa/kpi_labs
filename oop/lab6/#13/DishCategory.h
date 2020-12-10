@@ -14,8 +14,6 @@ public:
 	DishCategory();
 	DishCategory(DishType);
 
-	~DishCategory();
-
 	DishType getDishType();
 	void setDishType(DishType);
 

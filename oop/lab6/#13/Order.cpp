@@ -15,13 +15,6 @@ Order::Order(vector<Dish> dishList,
 	setDishList(dishList);
 }
 
-Order::Order(Order& order) {
-	setDishList(order.dishList_);
-}
-
-Order::~Order() {
-	show();
-}
 
 vector<Dish> Order::getDishList() {
 	return dishList_;
@@ -54,5 +47,9 @@ void Order::printDishListInfo() {
 }
 
 void Order::show() {
-	cout << "Order.show()" << endl;
+	for (Dish dish: dishList_) {
+		dish.show();
+	}
+	Waiter::show();
+	Date::show();
 }

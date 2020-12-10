@@ -20,8 +20,6 @@ public:
 
     Person(Person&);
 
-    ~Person();
-
     string getFirstName();
     void setFirstName(string);
 

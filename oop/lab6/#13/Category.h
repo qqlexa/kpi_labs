@@ -13,8 +13,6 @@ public:
 	Category();
 	Category(WorkCategory);
 
-	~Category();
-
 
 	WorkCategory getWorkCategory();
 	void setWorkCategory(WorkCategory);

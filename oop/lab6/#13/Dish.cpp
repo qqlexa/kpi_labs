@@ -14,10 +14,6 @@ Dish::Dish(string name, float price, DishType dishType) : DishCategory(dishType)
 	price_ = (price > 0) ? price : 0;
 }
 
-Dish::~Dish() {
-	show();
-}
-
 string Dish::getName() {
 	return name_;
 }
@@ -35,5 +31,7 @@ void Dish::setPrice(float price) {
 }
 
 void Dish::show() {
-	cout << "Dish.show()" << endl;
+	cout << "name_: " << name_ << endl;
+	cout << "price_: " << price_ << endl;
+	DishCategory::show();
 }

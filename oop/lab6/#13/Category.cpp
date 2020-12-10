@@ -11,9 +11,6 @@ Category::Category(WorkCategory workCategory) {
 	workCategory_ = workCategory;
 }
 
-Category::~Category() {
-	show();
-}
 
 WorkCategory Category::getWorkCategory() {
 	return workCategory_;
@@ -24,5 +21,19 @@ void Category::setWorkCategory(WorkCategory workCategory) {
 }
 
 void Category::show() {
-	cout << "Category.show()" << endl;
+	cout << "workCategory_: ";
+	switch (workCategory_) {
+	case WorkCategory::JUNIOR_WAITER: {
+		cout << "JUNIOR_WAITER" << endl;
+	} break;
+	case WorkCategory::WAITER: {
+		cout << "WAITER" << endl;
+	} break;
+	case WorkCategory::SENIOR_WAITER: {
+		cout << "SENIOR_WAITER" << endl;
+	} break;
+	case WorkCategory::HEADWAITER: {
+		cout << "HEADWAITER" << endl;
+	} break;
+	}
 }
