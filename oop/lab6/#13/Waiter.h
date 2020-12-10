@@ -12,8 +12,6 @@ public:
     Waiter();
     Waiter(string, string, Sex, int, int, int, WorkCategory, int, int, int);
 
-    ~Waiter();
-
     virtual void show();
 };
 
