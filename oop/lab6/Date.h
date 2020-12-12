@@ -2,9 +2,9 @@
 class Date
 {
 protected:
-    int year_;
-    int month_;
-    int day_;
+	int year_;
+	int month_;
+	int day_;
 public:
     Date();
     Date(int, int, int);
@@ -22,6 +22,6 @@ public:
 
     void setDate(int, int, int);
 
-    virtual void show();
+   virtual void show();
 };
 
