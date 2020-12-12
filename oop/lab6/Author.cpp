@@ -16,10 +16,6 @@ Author::Author(Author& author){
 	post_ = author.post_;
 }
 
-Author::~Author() {
-	show();
-}
-
 Post Author::getPost() {
 	return post_;
 }
@@ -29,5 +25,33 @@ void Author::setPost(Post post) {
 }
 
 void Author::show() {
-	cout << "Author.show()" << endl;
+	switch (post_) {
+	case Post::STUDENT: {
+		cout << "Student" << endl;
+	} break;
+	case Post::SPECIALIST: {
+		cout << "SPECIALIST" << endl;
+	} break;
+	case Post::MASTER: {
+		cout << "MASTER" << endl;
+	} break;
+	case Post::POSTGRADUATE: {
+		cout << "POSTGRADUATE" << endl;
+	} break;
+	case Post::ASSISTANT: {
+		cout << "ASSISTANT" << endl;
+	} break;
+	case Post::TEACHER: {
+		cout << "TEACHER" << endl;
+	} break;
+	case Post::DOCENT: {
+		cout << "DOCENT" << endl;
+	} break;
+	case Post::PROFESSOR: {
+		cout << "PROFESSOR" << endl;
+	} break;
+	default:
+		break;
+	}
+	Person::show();
 }
