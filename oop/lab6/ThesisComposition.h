@@ -21,8 +21,6 @@ public:
 
     ThesisComposition(ThesisComposition&);
 
-    ~ThesisComposition();
-
     vector<Thesis> getComposition();
     void setComposition(vector<Thesis>);
     void appendComposition(Thesis);

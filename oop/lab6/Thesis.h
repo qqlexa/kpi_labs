@@ -26,7 +26,6 @@ public:
     Thesis(Thesis&);
 
     Thesis(const Thesis&);
-    ~Thesis();
 
     Author& getAuthorStudent();
     void setAuthorStudent(Author&);

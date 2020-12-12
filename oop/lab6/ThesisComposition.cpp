@@ -14,10 +14,6 @@ ThesisComposition::ThesisComposition(ThesisComposition& thesisComposition){
 	countLists_ = thesisComposition.countLists_;
 }
 
-ThesisComposition::~ThesisComposition() {
-	show();
-}
-
 vector<Thesis> ThesisComposition::getComposition() {
 	return thesisComposition_;
 }
@@ -59,5 +55,10 @@ void ThesisComposition::printCompositionInfo() {
 }
 
 void ThesisComposition::show() {
-	cout << "ThesisComposition" << endl;
+	for (Thesis thesis : thesisComposition_) {
+		thesis.show();
+		cout << endl;
+	}
+	cout << "countLists_: " << countLists_ << endl;
+	Date::show();
 }
