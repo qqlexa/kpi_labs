@@ -53,10 +53,6 @@ Thesis::Thesis(const Thesis& thesis) {
     amountLists_ = thesis.amountLists_;
 }
 
-Thesis::~Thesis() {
-    show();
-}
-
 Author& Thesis::getAuthorStudent() {
     return authorStudent_;
 }
@@ -107,5 +103,12 @@ void Thesis::setAmountLists(float amountLists) {
 }
 
 void Thesis::show() {
-    cout << "Thesis" << endl;
+    authorStudent_.show();
+    authorBoss_.show();
+
+    cout << "drawName_: " << drawName_ << endl;
+    cout << "countDraws_ = " << countDraws_ << endl;
+    cout << "countLinks_ = " << countLinks_ << endl;
+    cout << "amountLists_ = " << amountLists_ << endl;
+    Date::show();
 }
