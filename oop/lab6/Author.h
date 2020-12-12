@@ -15,7 +15,6 @@ public:
     Author(string, string, int, int, int, Post);
 
     Author(Author&);
-    ~Author();
 
     Post getPost();
     void setPost(Post);
