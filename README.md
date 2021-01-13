@@ -2,6 +2,13 @@
 <h1>II semester</h1>
 <ul>
   <li>
+    <a href=>Алгоритмызація та програмування</a> Крячок О. С., Воронько М. П.
+  </li>
+</ul>
+
+<h1>II semester</h1>
+<ul>
+  <li>
     <a href=https://github.com/qqlexa/complex_algorithms>Програмування складних алгоритмів</a> Колумбет В. П.
   </li>
   <li>
