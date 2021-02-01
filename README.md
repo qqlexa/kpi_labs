@@ -31,3 +31,10 @@
     <a href=https://github.com/qqlexa/numerical_methodsp>Чисельні методи</a> Шушура О. М.
   </li>
 </ul>
+
+<h1>IV semester</h1>
+<ul>
+  <li>
+    <a href=https://github.com/qqlexa/kpi_labs/tree/main/ecological_monitoring>Екологічний моніторинг</a> Сліпченко В. Г., Полягушко Л. Г.
+  </li>
+</ul>
