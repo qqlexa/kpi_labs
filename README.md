@@ -1,5 +1,5 @@
 # kpi_labs
-<h1>II semester</h1>
+<h1>I semester</h1>
 <ul>
   <li>
     <a href=>Алгоритмізація та програмування</a> Крячок О. С., Воронько М. П.
