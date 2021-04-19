@@ -28,7 +28,7 @@
     <a href=https://github.com/qqlexa/kpi_labs/tree/main/ecological_monitoring>Екологічний моніторинг</a> Сліпченко В. Г., Полягушко Л. Г.
   </li>
   <li>
-    <a href=https://github.com/qqlexa/numerical_methodsp>Чисельні методи</a> Шушура О. М.
+    <a href=https://github.com/qqlexa/numerical_methods>Чисельні методи</a> Шушура О. М.
   </li>
 </ul>
 
